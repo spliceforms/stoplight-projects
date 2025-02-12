@@ -1,1 +1,1 @@
-# stopelight-style-guide
+# stoplight-style-guide
