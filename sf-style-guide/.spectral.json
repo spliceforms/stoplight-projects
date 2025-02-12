@@ -274,15 +274,15 @@
         }
       ]
     },
-    "API_Document": {
-      "description": "The complete API specification document. This can be used to target any part of the OpenAPI document using **field**.\n\n*Use this if you don't find specific targets that cater to your usecase.* ",
+    "All_Array_Item": {
+      "description": "",
       "targets": [
         {
           "formats": [
             "oas2"
           ],
           "given": [
-            "$"
+            "$..[?(@ && @.type=='array')]"
           ]
         },
         {
@@ -290,7 +290,220 @@
             "oas3"
           ],
           "given": [
-            "$"
+            "$..[?(@ && @.type=='array')]"
+          ]
+        },
+        {
+          "formats": [
+            "oas3.0"
+          ],
+          "given": [
+            "$..[?(@ && @.type=='array')]",
+            "$..[?(@ && @.type && @.type.constructor.name === 'Array' && @.type.includes('array'))]"
+          ]
+        }
+      ]
+    },
+    "All_Enum_Object": {
+      "description": "All references throughout the API",
+      "targets": [
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$..[?(@ && @.enum)]"
+          ]
+        },
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$..[?(@ && @.enum)]"
+          ]
+        }
+      ]
+    },
+    "All_Enum_Value": {
+      "description": "All enum values throughout the API",
+      "targets": [
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$..[?(@ && @.enum)].enum[*]"
+          ]
+        },
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$..[?(@ && @.enum)].enum[*]"
+          ]
+        }
+      ]
+    },
+    "All_Example": {
+      "description": "All examples across the API document",
+      "targets": [
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$..examples[*]"
+          ]
+        },
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$.components.examples[*]",
+            "$.paths[*][*]..content[*].examples[*]",
+            "$.paths[*][*]..parameters[*].examples[*]",
+            "$.components.parameters[*].examples[*]",
+            "$.paths[*][*]..headers[*].examples[*]",
+            "$.components.headers[*].examples[*]"
+          ]
+        }
+      ]
+    },
+    "All_Example_Media": {
+      "description": "All examples for schemas",
+      "targets": [
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$..responses..[?(@ && @.schema && @.examples)]"
+          ]
+        },
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$..content..[?(@ && @.schema && (@.example !== void 0 || @.examples))]",
+            "$..headers..[?(@ && @.schema && (@.example !== void 0 || @.examples))]",
+            "$..parameters..[?(@ && @.schema && (@.example !== void 0 || @.examples))]"
+          ]
+        }
+      ]
+    },
+    "All_Example_Schema": {
+      "description": "All examples for schemas",
+      "targets": [
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$..definitions..[?(@property !== 'properties' && @ && (@.example !== void 0 || @['x-example'] !== void 0 || @.default !== void 0) && (@.enum || @.type || @.format || @.$ref || @.properties || @.items))]",
+            "$..parameters..[?(@property !== 'properties' && @ && (@.example !== void 0 || @['x-example'] !== void 0 || @.default !== void 0) && (@.enum || @.type || @.format || @.$ref || @.properties || @.items))]",
+            "$..responses..[?(@property !== 'properties' && @ && (@.example !== void 0 || @['x-example'] !== void 0 || @.default !== void 0) && (@.enum || @.type || @.format || @.$ref || @.properties || @.items))]"
+          ]
+        },
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$.components.schemas..[?(@property !== 'properties' && @ && (@ && @.example !== void 0 || @.default !== void 0) && (@.enum || @.type || @.format || @.$ref || @.properties || @.items))]",
+            "$..content..[?(@property !== 'properties' && @ && (@ && @.example !== void 0 || @.default !== void 0) && (@.enum || @.type || @.format || @.$ref || @.properties || @.items))]",
+            "$..headers..[?(@property !== 'properties' && @ && (@ && @.example !== void 0 || @.default !== void 0) && (@.enum || @.type || @.format || @.$ref || @.properties || @.items))]",
+            "$..parameters..[?(@property !== 'properties' && @ && (@ && @.example !== void 0 || @.default !== void 0) && (@.enum || @.type || @.format || @.$ref || @.properties || @.items))]"
+          ]
+        }
+      ]
+    },
+    "All_Markdown": {
+      "description": "All markdown descriptions across the document.",
+      "targets": [
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$..[description,title]"
+          ]
+        },
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$..[description,title]"
+          ]
+        }
+      ]
+    },
+    "All_Ref": {
+      "description": "All references throughout the API",
+      "targets": [
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$..[?(@property === '$ref')]"
+          ]
+        },
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$..[?(@property === '$ref')]"
+          ]
+        }
+      ]
+    },
+    "All_Servers": {
+      "description": "API hosts defined in the API specification",
+      "targets": [
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$.servers[*]",
+            "#Path_Item.servers[*]",
+            "#Operation_Object.servers[*]",
+            "#Link_Object.server"
+          ]
+        },
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$.host"
+          ]
+        }
+      ]
+    },
+    "API_Contact": {
+      "description": "The top level description in an API document",
+      "targets": [
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$.info.contact"
+          ]
+        },
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$.info.contact"
           ]
         }
       ]
@@ -312,6 +525,167 @@
           ],
           "given": [
             "$.info.description"
+          ]
+        }
+      ]
+    },
+    "API_Document": {
+      "description": "The complete API specification document. This can be used to target any part of the OpenAPI document using **field**.\n\n*Use this if you don't find specific targets that cater to your usecase.* ",
+      "targets": [
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$"
+          ]
+        },
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$"
+          ]
+        }
+      ]
+    },
+    "API_Document_RecursiveSearch": {
+      "description": "The complete API specification document. This can be used to target any part of the OpenAPI document using **field**.\n\n*Use this if you don't find specific targets that cater to your usecase.* ",
+      "targets": [
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$.."
+          ]
+        },
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$.."
+          ]
+        }
+      ]
+    },
+    "API_License": {
+      "description": "The top level description in an API document",
+      "targets": [
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$.info.license"
+          ]
+        },
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$.info.license"
+          ]
+        }
+      ]
+    },
+    "API_Server": {
+      "description": "API hosts defined in the API specification",
+      "targets": [
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$.servers"
+          ]
+        },
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$.host"
+          ]
+        }
+      ]
+    },
+    "API_Server_URL": {
+      "description": "API host urls defined in the API specification",
+      "targets": [
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$.servers[*].url"
+          ]
+        },
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$.host"
+          ]
+        }
+      ]
+    },
+    "API_Tags": {
+      "description": "Tags on an API object",
+      "targets": [
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "#Operation_Object.tags"
+          ]
+        },
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "#Operation_Object.tags"
+          ]
+        }
+      ]
+    },
+    "API_Tags_Item": {
+      "description": "Tags on an API object",
+      "targets": [
+        {
+          "formats": [
+            "oas2"
+          ],
+          "given": [
+            "$.tags[*]"
+          ]
+        },
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$.tags[*]"
+          ]
+        }
+      ]
+    },
+    "Link_Object": {
+      "description": "",
+      "targets": [
+        {
+          "formats": [
+            "oas3"
+          ],
+          "given": [
+            "$.components.links[*]",
+            "#Response_All_Object.links[*]"
           ]
         }
       ]
@@ -379,15 +753,15 @@
         }
       ]
     },
-    "API_Contact": {
-      "description": "The top level description in an API document",
+    "Path_Object": {
+      "description": "Path object. Usually used to target the Path key e.g. `/users/{userId}`",
       "targets": [
         {
           "formats": [
             "oas2"
           ],
           "given": [
-            "$.info.contact"
+            "$.paths"
           ]
         },
         {
@@ -395,182 +769,7 @@
             "oas3"
           ],
           "given": [
-            "$.info.contact"
-          ]
-        }
-      ]
-    },
-    "API_License": {
-      "description": "The top level description in an API document",
-      "targets": [
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$.info.license"
-          ]
-        },
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$.info.license"
-          ]
-        }
-      ]
-    },
-    "All_Markdown": {
-      "description": "All markdown descriptions across the document.",
-      "targets": [
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$..[description,title]"
-          ]
-        },
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$..[description,title]"
-          ]
-        }
-      ]
-    },
-    "API_Tags": {
-      "description": "Tags on an API object",
-      "targets": [
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "#Operation_Object.tags"
-          ]
-        },
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "#Operation_Object.tags"
-          ]
-        }
-      ]
-    },
-    "All_Servers": {
-      "description": "API hosts defined in the API specification",
-      "targets": [
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$.servers[*]",
-            "#Path_Item.servers[*]",
-            "#Operation_Object.servers[*]",
-            "#Link_Object.server"
-          ]
-        },
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$.host"
-          ]
-        }
-      ]
-    },
-    "Response_All_Object": {
-      "description": "All responses (object) in an API",
-      "targets": [
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$.responses",
-            "#Operation_Responses",
-            "$..responses"
-          ]
-        },
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$.components.responses",
-            "#Operation_Responses",
-            "$..responses"
-          ]
-        }
-      ]
-    },
-    "API_Server_URL": {
-      "description": "API host urls defined in the API specification",
-      "targets": [
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$.servers[*].url"
-          ]
-        },
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$.host"
-          ]
-        }
-      ]
-    },
-    "All_Ref": {
-      "description": "All references throughout the API",
-      "targets": [
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$..[?(@property === '$ref')]"
-          ]
-        },
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$..[?(@property === '$ref')]"
-          ]
-        }
-      ]
-    },
-    "All_Enum_Object": {
-      "description": "All references throughout the API",
-      "targets": [
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$..[?(@ && @.enum)]"
-          ]
-        },
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$..[?(@ && @.enum)]"
+            "$.paths"
           ]
         }
       ]
@@ -596,15 +795,15 @@
         }
       ]
     },
-    "Request_Parameter_Query": {
-      "description": "All request query parameters",
+    "Request_Parameter_Cookie": {
+      "description": "All request cookie parameters",
       "targets": [
         {
           "formats": [
             "oas2"
           ],
           "given": [
-            "$..parameters[?(@ && @.in==\"query\")]"
+            "$..parameters[?(@ && @.in==\"cookie\")]"
           ]
         },
         {
@@ -612,7 +811,7 @@
             "oas3"
           ],
           "given": [
-            "$..parameters[?(@ && @.in==\"query\")]"
+            "$..parameters[?(@ && @.in==\"cookie\")]"
           ]
         }
       ]
@@ -638,27 +837,6 @@
         }
       ]
     },
-    "Request_Parameter_Cookie": {
-      "description": "All request cookie parameters",
-      "targets": [
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$..parameters[?(@ && @.in==\"cookie\")]"
-          ]
-        },
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$..parameters[?(@ && @.in==\"cookie\")]"
-          ]
-        }
-      ]
-    },
     "Request_Parameter_Path": {
       "description": "All request path parameters",
       "targets": [
@@ -680,15 +858,15 @@
         }
       ]
     },
-    "Path_Object": {
-      "description": "Path object. Usually used to target the Path key e.g. `/users/{userId}`",
+    "Request_Parameter_Query": {
+      "description": "All request query parameters",
       "targets": [
         {
           "formats": [
             "oas2"
           ],
           "given": [
-            "$.paths"
+            "$..parameters[?(@ && @.in==\"query\")]"
           ]
         },
         {
@@ -696,22 +874,22 @@
             "oas3"
           ],
           "given": [
-            "$.paths"
+            "$..parameters[?(@ && @.in==\"query\")]"
           ]
         }
       ]
     },
-    "All_Example_Schema": {
-      "description": "All examples for schemas",
+    "Response_All_Object": {
+      "description": "All responses (object) in an API",
       "targets": [
         {
           "formats": [
             "oas2"
           ],
           "given": [
-            "$..definitions..[?(@property !== 'properties' && @ && (@.example !== void 0 || @['x-example'] !== void 0 || @.default !== void 0) && (@.enum || @.type || @.format || @.$ref || @.properties || @.items))]",
-            "$..parameters..[?(@property !== 'properties' && @ && (@.example !== void 0 || @['x-example'] !== void 0 || @.default !== void 0) && (@.enum || @.type || @.format || @.$ref || @.properties || @.items))]",
-            "$..responses..[?(@property !== 'properties' && @ && (@.example !== void 0 || @['x-example'] !== void 0 || @.default !== void 0) && (@.enum || @.type || @.format || @.$ref || @.properties || @.items))]"
+            "$.responses",
+            "#Operation_Responses",
+            "$..responses"
           ]
         },
         {
@@ -719,187 +897,9 @@
             "oas3"
           ],
           "given": [
-            "$.components.schemas..[?(@property !== 'properties' && @ && (@ && @.example !== void 0 || @.default !== void 0) && (@.enum || @.type || @.format || @.$ref || @.properties || @.items))]",
-            "$..content..[?(@property !== 'properties' && @ && (@ && @.example !== void 0 || @.default !== void 0) && (@.enum || @.type || @.format || @.$ref || @.properties || @.items))]",
-            "$..headers..[?(@property !== 'properties' && @ && (@ && @.example !== void 0 || @.default !== void 0) && (@.enum || @.type || @.format || @.$ref || @.properties || @.items))]",
-            "$..parameters..[?(@property !== 'properties' && @ && (@ && @.example !== void 0 || @.default !== void 0) && (@.enum || @.type || @.format || @.$ref || @.properties || @.items))]"
-          ]
-        }
-      ]
-    },
-    "API_Document_RecursiveSearch": {
-      "description": "The complete API specification document. This can be used to target any part of the OpenAPI document using **field**.\n\n*Use this if you don't find specific targets that cater to your usecase.* ",
-      "targets": [
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$.."
-          ]
-        },
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$.."
-          ]
-        }
-      ]
-    },
-    "All_Example": {
-      "description": "All examples across the API document",
-      "targets": [
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$..examples[*]"
-          ]
-        },
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$.components.examples[*]",
-            "$.paths[*][*]..content[*].examples[*]",
-            "$.paths[*][*]..parameters[*].examples[*]",
-            "$.components.parameters[*].examples[*]",
-            "$.paths[*][*]..headers[*].examples[*]",
-            "$.components.headers[*].examples[*]"
-          ]
-        }
-      ]
-    },
-    "All_Example_Media": {
-      "description": "All examples for schemas",
-      "targets": [
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$..responses..[?(@ && @.schema && @.examples)]"
-          ]
-        },
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$..content..[?(@ && @.schema && (@.example !== void 0 || @.examples))]",
-            "$..headers..[?(@ && @.schema && (@.example !== void 0 || @.examples))]",
-            "$..parameters..[?(@ && @.schema && (@.example !== void 0 || @.examples))]"
-          ]
-        }
-      ]
-    },
-    "API_Tags_Item": {
-      "description": "Tags on an API object",
-      "targets": [
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$.tags[*]"
-          ]
-        },
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$.tags[*]"
-          ]
-        }
-      ]
-    },
-    "All_Enum_Value": {
-      "description": "All enum values throughout the API",
-      "targets": [
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$..[?(@ && @.enum)].enum[*]"
-          ]
-        },
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$..[?(@ && @.enum)].enum[*]"
-          ]
-        }
-      ]
-    },
-    "Link_Object": {
-      "description": "",
-      "targets": [
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$.components.links[*]",
-            "#Response_All_Object.links[*]"
-          ]
-        }
-      ]
-    },
-    "API_Server": {
-      "description": "API hosts defined in the API specification",
-      "targets": [
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$.servers"
-          ]
-        },
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$.host"
-          ]
-        }
-      ]
-    },
-    "All_Array_Item": {
-      "description": "",
-      "targets": [
-        {
-          "formats": [
-            "oas2"
-          ],
-          "given": [
-            "$..[?(@ && @.type=='array')]"
-          ]
-        },
-        {
-          "formats": [
-            "oas3"
-          ],
-          "given": [
-            "$..[?(@ && @.type=='array')]"
-          ]
-        },
-        {
-          "formats": [
-            "oas3.0"
-          ],
-          "given": [
-            "$..[?(@ && @.type=='array')]",
-            "$..[?(@ && @.type && @.type.constructor.name === 'Array' && @.type.includes('array'))]"
+            "$.components.responses",
+            "#Operation_Responses",
+            "$..responses"
           ]
         }
       ]
@@ -1093,16 +1093,16 @@
           "field": "minimum"
         },
         {
-          "function": "defined",
+          "function": "undefined",
           "field": "exclusiveMinimum"
         },
         {
-          "function": "defined",
+          "function": "undefined",
           "field": "exclusiveMaximum"
         }
       ],
-      "description": "**Integer property must have `minimum`, `maximum`, `exclusiveMinimum`, and `exclusiveMaximum` constraints**\n\nEvery integer property in your schema must include the following constraints:\n\n- `minimum`: The minimum value the integer can take.\n- `maximum`: The maximum value the integer can take.\n- `exclusiveMinimum`: Whether the minimum value is exclusive.\n- `exclusiveMaximum`: Whether the maximum value is exclusive.\n\n#### Json Example:\n\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"age\": {\n      \"type\": \"integer\",\n      \"minimum\": 0,\n      \"maximum\": 100,\n      \"exclusiveMinimum\": false,\n      \"exclusiveMaximum\": false\n    },\n    \"score\": {\n      \"type\": \"integer\",\n      \"minimum\": 1,\n      \"maximum\": 10,\n      \"exclusiveMinimum\": true,\n      \"exclusiveMaximum\": true\n    }\n  }\n}\n",
-      "message": "Integer property must have minimum, maximum, exclusiveMinimum, and exclusiveMaximum constraints"
+      "description": "**An integer property must include minimum and maximum constraints but must not have exclusiveMinimum or exclusiveMaximum constraints.**\n\nEvery integer property in your schema must include the following constraints:\n\n- `minimum`: The minimum value the integer can take.\n- `maximum`: The maximum value the integer can take.\n\n\n#### Json Example:\n\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"age\": {\n      \"type\": \"integer\",\n      \"minimum\": 0,\n      \"maximum\": 100,\n      \"exclusiveMinimum\": false,\n      \"exclusiveMaximum\": false\n    },\n    \"score\": {\n      \"type\": \"integer\",\n      \"minimum\": 1,\n      \"maximum\": 10,\n      \"exclusiveMinimum\": false,\n      \"exclusiveMaximum\": false\n    }\n  }\n}\n",
+      "message": "An integer property must include minimum and maximum constraints but must not have exclusiveMinimum or exclusiveMaximum constraints."
     },
     "sf_property-format-for-integer": {
       "given": [
