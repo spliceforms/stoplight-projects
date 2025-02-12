@@ -256,7 +256,7 @@
             "oas3"
           ],
           "given": [
-            "$..properties[?(!(@.$ref))]"
+            "$..properties[?(!(@.$ref) && !(@.oneOf) && !(@.allOf) && !(@.anyOf))]"
           ]
         }
       ]
