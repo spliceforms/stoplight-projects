@@ -71,7 +71,6 @@ export const sfCheckJsonProblem = createRulesetFunction(
 
     // Required properties with expected types
     const requiredProperties = {
-      type: 'string',
       title: 'string',
       status: 'integer',
     };
@@ -79,7 +78,7 @@ export const sfCheckJsonProblem = createRulesetFunction(
     // Check if required properties are defined in the 'required' array
     const missingRequiredFields = [];
     const schemaRequiredFields = schema.required || [];
-    
+
     Object.keys(requiredProperties).forEach((prop) => {
       if (!schemaRequiredFields.includes(prop)) {
         missingRequiredFields.push(prop);
