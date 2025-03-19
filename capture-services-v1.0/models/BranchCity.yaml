@@ -1,0 +1,17 @@
+type: object
+x-stoplight:
+  id: 4uar581vkoj0x
+title: BranchCity
+description: It specifies the details of City where bank branch is available
+required:
+  - code
+  - name
+properties:
+  code:
+    $ref: 'stoplight://resources/overrides/e716yeYODOc'
+    x-stoplight:
+      id: 04hstu3r9unk5
+  name:
+    $ref: 'stoplight://resources/overrides/uacPPo0KgqI'
+    x-stoplight:
+      id: yeul0i38ycatd

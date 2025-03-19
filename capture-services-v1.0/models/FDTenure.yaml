@@ -1,0 +1,33 @@
+type: object
+title: FDTenure
+description: 'This indicates the duration for which the Fixed Deposit (FD) is held, expressed in days, months and years.'
+x-stoplight:
+  id: b8a8yencrf6fn
+required:
+  - days
+  - months
+  - years
+properties:
+  days:
+    type: integer
+    description: Tenure expressed in days
+    format: int32
+    minimum: 1
+    maximum: 31
+    example: 1
+  months:
+    type: integer
+    description: Tenure expressed in months
+    format: int32
+    minimum: 6
+    maximum: 11
+    examples:
+      - 6
+  years:
+    type: integer
+    description: Tenure expressed in years
+    format: int32
+    minimum: 0
+    maximum: 10
+    examples:
+      - 1

@@ -1,0 +1,40 @@
+title: FDMaturityCalculationRequest
+type: object
+x-examples:
+  Example 1:
+    mobileNo: '+919876543210'
+    accountNo: '102001053892'
+    amount:
+      value: 5000
+      currency: INR
+    dob: '1998-01-12'
+    productType: regular
+    interestPaymentFrequency: reinvestment
+    tenure:
+      days: 1
+      months: 6
+      years: 1
+    maturityInstruction: renewPrinciple
+properties:
+  mobileNo:
+    $ref: 'stoplight://resources/overrides/LT9qrA1aRC4'
+    description: Specifies the contact mobile number for an individual.
+  accountNo:
+    $ref: 'stoplight://resources/overrides/swJoliwLU7s'
+    description: Specifies the bank account from which funds are debited.
+  amount:
+    $ref: ./AmountWithCurrency.yaml
+    description: The original deposit amount upon maturity or withdrawal.
+  dob:
+    $ref: 'stoplight://resources/overrides/UEKAfGKnXtA'
+    description: 'The exact date on which the individual was born, including the day, month, and year.'
+  productType:
+    $ref: 'stoplight://resources/overrides/eZOUNbW4Dy0'
+  interestPayoutTreatment:
+    $ref: 'stoplight://resources/overrides/GIH20YnXrJk'
+    x-stoplight:
+      id: 27bwffgdncfw6
+  tenure:
+    $ref: ./FDTenure.yaml
+  maturityInstruction:
+    $ref: 'stoplight://resources/overrides/hNcvI153XgU'

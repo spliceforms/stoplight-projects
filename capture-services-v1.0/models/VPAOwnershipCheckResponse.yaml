@@ -1,0 +1,10 @@
+title: VPAOwnershipCheckResponse
+x-stoplight:
+  id: r4eoi7ry7f8o1
+type: object
+properties:
+  isValid:
+    type: boolean
+    description: Response of the VPA check
+    x-stoplight:
+      id: an8kqg2rp2y1d

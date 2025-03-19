@@ -1,0 +1,31 @@
+type: object
+title: Nominee
+description: Specifies the personal information of the nominee designated by the account holder.
+x-package: nomination
+x-stoplight:
+  id: 70bneppghra7k
+required:
+  - name
+  - dob
+  - address
+  - relationshipWithApplicant
+properties:
+  name:
+    $ref: 'stoplight://resources/overrides/5yNhk1Hgfig'
+    description: The full name of the individual nominated by the account holder to receive the benefits or proceeds of the account in the event of the account holder's demise.
+  dob:
+    $ref: 'stoplight://resources/overrides/UEKAfGKnXtA'
+    description: 'If nominee dob is less than 18yrs then guardian details in "guardian" has to be filled. '
+  address:
+    $ref: ./NomineeAddress.yaml
+  relationshipWithApplicant:
+    $ref: 'stoplight://resources/overrides/02QZBj0cg1s'
+    description: |-
+      Relationship of Nominee with Applicant/Depositor.
+      The allowed values will have to comply with the values of codeset
+  guardian:
+    $ref: ./Guardian.yaml
+  sharePercentage:
+    $ref: 'stoplight://resources/overrides/IVykiNdyptI'
+    x-stoplight:
+      id: z2a474uhtz3pr

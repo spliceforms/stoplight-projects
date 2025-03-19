@@ -1,0 +1,28 @@
+type: object
+x-stoplight:
+  id: hsqnh5jhmn1wf
+title: Code
+description: Code against active Codeset
+required:
+  - code
+  - name
+properties:
+  code:
+    type: string
+    description: The code is one of the unique value in a codeset
+    pattern: '^[a-zA-Z0-9]+$'
+    minLength: 1
+    maxLength: 100
+    examples:
+      - R
+    x-stoplight:
+      id: a50h5rj8ud405
+  name:
+    type: string
+    pattern: '^[a-zA-Z0-9]+$'
+    minLength: 1
+    maxLength: 500
+    description: 'The human-readable name of the code, designed for display in user interfaces or logging purposes.'
+    example: reinvestment
+    x-stoplight:
+      id: 85dn7af93nnmr

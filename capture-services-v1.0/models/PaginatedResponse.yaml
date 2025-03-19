@@ -1,0 +1,46 @@
+type: object
+x-stoplight:
+  id: cd03j7c25sy2q
+title: PaginatedResponse
+required:
+  - totalRecords
+  - totalPages
+  - pageNo
+  - pageSize
+properties:
+  totalRecords:
+    type: integer
+    description: Total number of records available.
+    format: int32
+    example: 45
+    minimum: 1
+    maximum: 10000
+    x-stoplight:
+      id: ng7t6wdgbqolv
+  totalPages:
+    type: integer
+    description: Total number of pages.
+    example: 4
+    minimum: 1
+    maximum: 1000
+    format: int32
+    x-stoplight:
+      id: tnb60gemsmgcg
+  pageNo:
+    type: integer
+    description: Current page number.
+    example: 2
+    minimum: 1
+    maximum: 100
+    format: int32
+    x-stoplight:
+      id: 2lvw64mf3ljcq
+  pageSize:
+    type: integer
+    description: Number of records per page.
+    example: 10
+    minimum: 1
+    maximum: 100
+    format: int32
+    x-stoplight:
+      id: lswzbcgxb87ul

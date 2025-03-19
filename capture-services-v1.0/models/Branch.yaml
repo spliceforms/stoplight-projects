@@ -1,0 +1,35 @@
+title: Branch
+x-stoplight:
+  id: 3pxsvpgp85b7e
+type: object
+properties:
+  code:
+    $ref: 'stoplight://resources/overrides/DkpDaBt77Zw'
+    x-stoplight:
+      id: 77rb4w7laxusj
+  name:
+    $ref: 'stoplight://resources/overrides/tKUjcMXT9qo'
+    x-stoplight:
+      id: wpgz0elj2w2mt
+  ifsc:
+    $ref: 'stoplight://resources/overrides/5js4tqEmILQ'
+    x-stoplight:
+      id: lifh9rlc26xri
+  category:
+    type: string
+    examples:
+      - Metropolitan
+    minLength: 1
+    x-stoplight:
+      id: cuavkgltht8o7
+    maxLength: 50
+    pattern: '^[A-Za-z0-9]+$'
+    description: 'It classifies a bank branch based on its location, size, and the range of services it offers.'
+  geoLocation:
+    $ref: ./GeoLocation.yaml
+    x-stoplight:
+      id: jibjuqpy4f1kd
+  address:
+    $ref: ./BranchAddress.yaml
+    x-stoplight:
+      id: p3vz76qi8mmhn

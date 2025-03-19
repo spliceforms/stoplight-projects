@@ -1,0 +1,37 @@
+type: object
+x-stoplight:
+  id: 3x1h6y4vmul6z
+title: City
+description: 'Specifies the details of city, state and country.'
+required:
+  - code
+  - name
+  - stateCode
+  - stateName
+  - countryCode
+  - countryName
+properties:
+  code:
+    $ref: 'stoplight://resources/overrides/e716yeYODOc'
+    x-stoplight:
+      id: lzdoashdvfodg
+  name:
+    $ref: 'stoplight://resources/overrides/uacPPo0KgqI'
+    x-stoplight:
+      id: 1s2hq2grcra0i
+  stateCode:
+    $ref: 'stoplight://resources/overrides/Cvh9dy4b2Bc'
+    x-stoplight:
+      id: 4i09y4fwq9qrk
+  stateName:
+    $ref: 'stoplight://resources/overrides/GmiZxW2vxw4'
+    x-stoplight:
+      id: k3ybr6vz1eiq1
+  countryCode:
+    $ref: 'stoplight://resources/overrides/TefCsIHCKhs'
+    x-stoplight:
+      id: 2ip2qp0a2o3et
+  countryName:
+    $ref: 'stoplight://resources/overrides/Zt82KlnOynE'
+    x-stoplight:
+      id: ibneu8qkxsnu6

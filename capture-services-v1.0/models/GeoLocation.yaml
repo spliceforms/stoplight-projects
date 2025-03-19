@@ -1,0 +1,17 @@
+title: GeoLocation
+x-stoplight:
+  id: tmhztlxh6befr
+description: Represents the geographical location
+type: object
+required:
+  - latitude
+  - longitude
+properties:
+  latitude:
+    $ref: 'stoplight://resources/overrides/Qf0eSUPDxn8'
+    x-stoplight:
+      id: dm2528c5mewjm
+  longitude:
+    $ref: 'stoplight://resources/overrides/GaeVyfJDlr4'
+    x-stoplight:
+      id: 64k0ifanddevb

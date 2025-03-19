@@ -1,0 +1,10 @@
+title: Application
+x-stoplight:
+  id: zzae6t0s9xwav
+type: object
+description: Common/base model for application with common attributes. Concrete models for specific channel application forms should extend this (using allOff construct)
+properties:
+  staff:
+    $ref: ./Staff.yaml
+    x-stoplight:
+      id: 9ntisl8skcjuj

@@ -1,0 +1,333 @@
+openapi: 3.1.0
+x-stoplight:
+  id: mrnq6rlv8lmce
+info:
+  version: '1.0'
+  title: Inquiry Services
+  summary: List of services to inquire customer data
+  description: This API provides endpoints to retrive the information about existing customer of the bank. This information could be used by channel application forms to display on the screen or to make certain decisions during application form data capture.
+  contact:
+    name: akhilesh
+    url: 'https://spliceforms.com/'
+    email: api@apibanking.com
+  license:
+    url: 'https://spliceforms.com/'
+    name: Commercial
+servers:
+  - url: 'https://api.stitch.spliceforms.com/inquiry'
+paths:
+  /v1/customer/vpa/verification:
+    post:
+      summary: Verify VPA (UPI Id)
+      description: Validates a customer's Virtual Payment Address (VPA) to ensure accuracy and correctness before processing transactions.
+      operationId: verifyCustomerVpa
+      requestBody:
+        description: Shared Request
+        content:
+          application/json:
+            schema:
+              $ref: ./models/VPAOwnershipCheckRequest.yaml
+            examples:
+              Example 1:
+                value:
+                  vpa: ranbir.kapoor@paytm
+                  accountHolderName: Ali Akbar
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/VPAOwnershipCheckResponse.yaml
+              examples:
+                Example 1:
+                  value:
+                    isValid: true
+                Example 2:
+                  value:
+                    isValid: false
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 400
+                    detail: string
+                    instance: 'http://example.com'
+                    validationErrors:
+                      - message: string
+                        properties:
+                          - string
+                        severity: ERROR
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 500
+                    detail: string
+                    instance: 'http://example.com'
+      servers:
+        - url: 'http://localhost:3000'
+      x-stoplight:
+        id: 6hs7n9a2ceoze
+      tags:
+        - data validations
+  /v1/customer/bank-account/verification:
+    post:
+      summary: Verify Bank Account
+      description: Validates a customer's bank account details to ensure accuracy before initiating transactions.
+      operationId: verifyCustomerBankAccount
+      requestBody:
+        description: Shared Request
+        content:
+          application/json:
+            schema:
+              $ref: ./models/BankAccountOwnershipCheckRequest.yaml
+            examples:
+              Example 1:
+                value:
+                  accountHolderName: Ali Akbar
+                  accountNo: '102001053892'
+                  accountType: SAVINGS
+                  ifsc: HDFC0000001
+                  bank: HDFC BANK PVT LTD
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/BankAccountOwnershipCheckResponse.yaml
+              examples:
+                Example 1:
+                  value:
+                    isValid: true
+                Example 2:
+                  value:
+                    isValid: false
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 400
+                    detail: string
+                    instance: 'http://example.com'
+                    validationErrors:
+                      - message: string
+                        properties:
+                          - string
+                        severity: ERROR
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 500
+                    detail: string
+                    instance: 'http://example.com'
+      servers:
+        - url: 'http://localhost:3000'
+      x-stoplight:
+        id: z72ur0s87hchj
+      tags:
+        - data validations
+  /v1/customer/accounts/nominees/get:
+    post:
+      summary: Fetch Account Nominees
+      description: Retrieves the list of nominees associated with a customer's accounts.
+      operationId: getCustomerAccountNominees
+      requestBody:
+        description: Shared Request
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - accountNo
+              properties:
+                accountNo:
+                  $ref: 'stoplight://resources/overrides/swJoliwLU7s'
+                  x-stoplight:
+                    id: 9l8wn7v6a0clg
+            examples:
+              Example 1:
+                value:
+                  accountNo: '102001053892'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  nominees:
+                    type: array
+                    description: Specifies the personal information of the nominee designated by the account holder.
+                    items:
+                      $ref: ./models/Nominee.yaml
+                      x-stoplight:
+                        id: zl8izkvheutvg
+              examples:
+                Example 1:
+                  value:
+                    nominees:
+                      - name: Virat Kohli
+                        gender: male
+                        dob: '1990-01-30'
+                        address:
+                          line1: Near Kailash Complex
+                          line2: Opposite Kailash Business Park
+                          line3: Near BMC Garden
+                          city: Mumbai
+                          district: Mumbai
+                          state: Maharashtra
+                          country: India
+                          pin: '410206'
+                        mobileNo: '+918082186583'
+                        emailId: rahim.sterling@gmail.com
+                        guardianDetails:
+                          name: Shekhar S Maity
+                          dob: '1990-01-30'
+                          relationshipWithNominee: Husband
+                          address:
+                            line1: Near Kailash Complex
+                            line2: Opposite Kailash Business Park
+                            line3: Near BMC Garden
+                            city: Mumbai
+                            district: Mumbai
+                            state: Maharashtra
+                            country: India
+                            pin: '410206'
+                        relationshipWithApplicant: Father
+                        sharePercentage: 50
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 400
+                    detail: string
+                    instance: 'http://example.com'
+                    validationErrors:
+                      - message: string
+                        properties:
+                          - string
+                        severity: ERROR
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 500
+                    detail: string
+                    instance: 'http://example.com'
+      servers:
+        - url: 'http://localhost:3000'
+      x-stoplight:
+        id: rndm0zusepvl2
+      tags:
+        - account data inquiry
+  /v1/customer/fd-maturity:
+    post:
+      summary: Calculate FD Maturity
+      description: Calculates the maturity amount and interest for a fixed deposit based on the provided principal amount and tenure.
+      operationId: calculateFDMaturity
+      requestBody:
+        description: Shared Request
+        content:
+          application/json:
+            schema:
+              $ref: ./models/FDMaturityCalculationRequest.yaml
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/FDMaturity.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 400
+                    detail: string
+                    instance: 'http://example.com'
+                    validationErrors:
+                      - message: string
+                        properties:
+                          - string
+                        severity: ERROR
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 500
+                    detail: string
+                    instance: 'http://example.com'
+      servers:
+        - url: 'http://localhost:3000'
+      x-stoplight:
+        id: ys0z42ijhi5mu
+      tags:
+        - calculators
+components: null
+tags:
+  - name: account data inquiry
+    description: Endpoints to inquire customer accounts information
+  - name: calculators
+    description: Endpoints to fetch calculator results
+  - name: data validations
+    description: Endpoints to verify customer information

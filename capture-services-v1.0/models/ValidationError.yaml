@@ -1,0 +1,47 @@
+type: object
+x-stoplight:
+  id: i03w36ken44hv
+title: ValidationError
+description: Validation Error
+required:
+  - message
+  - severity
+properties:
+  message:
+    type: string
+    description: Message for the validation error
+    pattern: '^[A-Za-z0-9-_ ]+'
+    minLength: 2
+    maxLength: 2048
+    examples:
+      - fields can not be empty
+    x-stoplight:
+      id: vfc11e0vv4ka0
+  fields:
+    type: array
+    description: One or more properties on which the validation was performed.
+    items:
+      type: string
+      description: Propertie on which the validation was performed.
+      pattern: '^[A-Za-z0-9-_]+'
+      minLength: 2
+      maxLength: 50
+      examples:
+        - '23212322'
+      x-stoplight:
+        id: 7ezn2bw6cptug
+    x-stoplight:
+      id: ngstgikrr1jga
+  severity:
+    type: string
+    enum:
+      - ERROR
+      - WARNING
+    description: Severity of the validation error.
+    pattern: '^[A-Z]+(_[A-Z]+)*$'
+    minLength: 2
+    maxLength: 50
+    examples:
+      - ERROR
+    x-stoplight:
+      id: kcvbyilxmlci5

@@ -1,0 +1,28 @@
+type: object
+x-stoplight:
+  id: j6sffy52noqvn
+title: Codeset
+description: It represents a standardized collection of related codes used within the system
+required:
+  - name
+  - codes
+properties:
+  name:
+    type: string
+    description: The name of the codeset.
+    pattern: '^[a-zA-Z0-9]+$'
+    minLength: 1
+    maxLength: 100
+    example: interestPaymentFrequency
+    x-stoplight:
+      id: a7cixbzfr3zl9
+  codes:
+    type: array
+    description: List of codes in a codeset
+    uniqueItems: true
+    items:
+      $ref: ./Code.yaml
+      x-stoplight:
+        id: wv6q4syd23oe0
+    x-stoplight:
+      id: nyhslubm2deqr

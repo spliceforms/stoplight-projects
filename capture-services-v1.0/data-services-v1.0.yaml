@@ -1,0 +1,934 @@
+openapi: 3.1.0
+x-stoplight:
+  id: p2yovmp4rufcv
+info:
+  version: '1.0'
+  title: Data Services
+  summary: ''
+  description: List of endpoints to serve the public data that may be needed for application form data capture.
+  contact:
+    name: akhilesh
+    url: 'https://spliceforms.com/'
+    email: api@apibanking.com
+  license:
+    url: 'https://spliceforms.com/'
+    name: Commercial
+servers:
+  - url: 'https://api.stitch.spliceforms.com/data'
+tags:
+  - name: branches
+    description: Endpoints for retrieving and managing bank branch information.
+  - name: codesets
+    description: Endpoints to retrieve codesets information
+  - name: consents
+    description: Endpoints dealing with consent management and definitions.
+  - name: location
+    description: 'Endpoints related to geographical locations, including states and cities.'
+paths:
+  /v1/branches:
+    get:
+      summary: Fetch Branches
+      description: Retrieves a complete list of all bank branches with their details.
+      operationId: fetchBranches
+      parameters:
+        - name: pageNo
+          in: query
+          description: It specifies the page number of the results to be returned
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 10000
+            default: 1
+            example: 1
+        - name: pageSize
+          in: query
+          description: It determines the number of records to be returned per page
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 10
+            maximum: 100
+            example: 10
+        - name: cityCode
+          in: query
+          description: It includes records that match the exact city code. The allowed values will have to comply with the values of "City" codeset.
+          schema:
+            type: string
+            pattern: '^[A-Za-z0-9]+$'
+            minLength: 1
+            maxLength: 50
+            example: MUM
+        - name: districtCode
+          in: query
+          description: It includes records that match the exact district code. The allowed values will have to comply with the values of "District" codeset.
+          schema:
+            type: string
+            maxLength: 50
+            example: MUM
+            minLength: 1
+            pattern: '^[A-Za-z0-9]+$'
+        - name: stateCode
+          in: query
+          description: It includes records that match the exact state code. The allowed values will have to comply with the values of "State" codeset.
+          schema:
+            type: string
+            maxLength: 50
+            example: MH
+            minLength: 1
+            pattern: '^[A-Za-z0-9]+$'
+        - name: countryCode
+          in: query
+          description: It includes records that match the exact country code. The allowed values will have to comply with the values of "Country" codeset.
+          schema:
+            type: string
+            maxLength: 50
+            default: IN
+            example: IN
+            minLength: 1
+            pattern: '^[A-Za-z0-9]+$'
+        - name: pin
+          in: query
+          description: It includes records that match the exact pincode
+          schema:
+            type: string
+            pattern: '^\d{6}$'
+            minLength: 1
+            maxLength: 6
+            example: '400102'
+        - name: ifsc
+          in: query
+          description: It includes records that match the exact ifsc code
+          schema:
+            type: string
+            minLength: 11
+            maxLength: 11
+            pattern: '^[A-Z]{4}0[0-9A-Z]{6}$'
+            example: HDFC0991001
+      responses:
+        '200':
+          description: 'This status code indicates that the request was received, understood, and processed successfully by the server. The response body will contain the data requested by the client.'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ./models/PaginatedResponse.yaml
+                    x-stoplight:
+                      id: slckwbt0ysvr7
+                  - type: object
+                    x-stoplight:
+                      id: p5lorl15epbrx
+                    properties:
+                      data:
+                        type: array
+                        x-stoplight:
+                          id: tk2u34onkp0qs
+                        description: List of branches matching the search criteria
+                        items:
+                          $ref: ./models/Branch.yaml
+                          x-stoplight:
+                            id: gphkrrtqil2bw
+              examples: {}
+        '400':
+          description: This status code indicates that the server could not understand or process the request due to invalid syntax or parameters. The client should modify the request and retry.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    title: string
+                    status: 400
+                    detail: string
+                    instance: 'http://example.com'
+                    validationErrors:
+                      - message: string
+                        properties:
+                          - string
+                        severity: ERROR
+        '500':
+          description: 'This status code means the server ran into an unexpected problem while processing your request. It indicates an issue on the server side, not with your input. Try refreshing or resubmitting your request after a short wait.'
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    title: string
+                    status: 500
+                    detail: string
+                    instance: 'http://example.com'
+      x-internal: false
+      x-stoplight:
+        id: ohkafxvi6bzdt
+      tags:
+        - branches
+  /v1/branches/states:
+    get:
+      summary: Fetch Branch States
+      description: Retrieves a distinct list of states where bank branches are located.
+      operationId: fetchBranchStates
+      parameters:
+        - name: pageNo
+          in: query
+          description: It specifies the page number of the results to be returned
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            maximum: 10000
+            example: 1
+            default: 1
+        - name: pageSize
+          in: query
+          description: It determines the number of records to be returned per page
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 10
+            maximum: 100
+            example: 10
+            default: 10
+        - name: countryCode
+          in: query
+          description: It includes records that match the exact country code. The allowed values will have to comply with the values of "Country" codeset.
+          schema:
+            type: string
+            maxLength: 50
+            default: IN
+            example: IN
+            minLength: 1
+            pattern: '^[A-Za-z0-9]+$'
+      responses:
+        '200':
+          description: 'This status code indicates that the request was received, understood, and processed successfully by the server. The response body will contain the data requested by the client.'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ./models/PaginatedResponse.yaml
+                  - type: object
+                    x-stoplight:
+                      id: 2ghemqj2yu6or
+                    properties:
+                      data:
+                        type: array
+                        x-stoplight:
+                          id: 71tx7p7uncdaw
+                        description: List of states where bank branch exists
+                        items:
+                          $ref: ./models/BranchState.yaml
+                          x-stoplight:
+                            id: g9p92ve6jtgb7
+              examples: {}
+        '400':
+          description: This status code indicates that the server could not understand or process the request due to invalid syntax or parameters. The client should modify the request and retry.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 400
+                    detail: string
+                    instance: 'http://example.com'
+                    validationErrors:
+                      - message: string
+                        properties:
+                          - string
+                        severity: ERROR
+        '500':
+          description: 'This status code means the server ran into an unexpected problem while processing your request. It indicates an issue on the server side, not with your input. Try refreshing or resubmitting your request after a short wait.'
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 500
+                    detail: string
+                    instance: 'http://example.com'
+      x-stoplight:
+        id: cw4rqjuccfmsu
+      tags:
+        - branches
+  /v1/branches/cities:
+    get:
+      summary: Fetch Branch Cities
+      description: Retrieves a distinct list of cities that have branch locations.
+      operationId: fetchBranchCities
+      parameters:
+        - name: pageNo
+          in: query
+          description: It specifies the page number of the results to be returned
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            maximum: 10000
+            default: 1
+            example: 1
+        - name: pageSize
+          in: query
+          description: It determines the number of records to be returned per page
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            maximum: 100
+            example: 10
+            default: 10
+        - name: districtCode
+          in: query
+          description: It includes records that match the exact district code. The allowed values will have to comply with the values of "District" codeset.
+          required: true
+          schema:
+            type: string
+            maxLength: 50
+            example: MUM
+            minLength: 1
+            pattern: '^[A-Za-z0-9]+$'
+        - name: stateCode
+          in: query
+          description: It includes records that match the exact state code. The allowed values will have to comply with the values of "State" codeset.
+          required: true
+          schema:
+            type: string
+            maxLength: 50
+            example: MH
+            pattern: '^[A-Za-z0-9]+$'
+            minLength: 1
+        - name: countryCode
+          in: query
+          description: It includes records that match the exact country code. The allowed values will have to comply with the values of "Country" codeset.
+          schema:
+            type: string
+            maxLength: 50
+            default: IN
+            example: IN
+            pattern: '^[A-Za-z0-9]+$'
+            minLength: 1
+      responses:
+        '200':
+          description: 'This status code indicates that the request was received, understood, and processed successfully by the server. The response body will contain the data requested by the client.'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ./models/PaginatedResponse.yaml
+                  - type: object
+                    x-stoplight:
+                      id: 5jj70r5npe5kh
+                    properties:
+                      data:
+                        type: array
+                        x-stoplight:
+                          id: 8cb39o13ku718
+                        description: List of cities where bank branch exists
+                        items:
+                          $ref: ./models/BranchCity.yaml
+                          x-stoplight:
+                            id: uzzs94xry7y5f
+              examples: {}
+        '400':
+          description: This status code indicates that the server could not understand or process the request due to invalid syntax or parameters. The client should modify the request and retry.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 400
+                    detail: string
+                    instance: 'http://example.com'
+                    validationErrors:
+                      - message: string
+                        properties:
+                          - string
+                        severity: ERROR
+        '500':
+          description: 'This status code means the server ran into an unexpected problem while processing your request. It indicates an issue on the server side, not with your input. Try refreshing or resubmitting your request after a short wait.'
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 500
+                    detail: string
+                    instance: 'http://example.com'
+      x-stoplight:
+        id: t0b4mkn2go7fv
+      tags:
+        - branches
+  /v1/branches/districts:
+    get:
+      summary: Fetch Branch Districts
+      description: Retrieves a distinct list of districts where branches are operating.
+      operationId: fetchBranchDistricts
+      parameters:
+        - name: pageNo
+          in: query
+          description: It specifies the page number of the results to be returned
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            maximum: 10000
+            default: 1
+            example: 1
+        - name: pageSize
+          in: query
+          description: It determines the number of records to be returned per page
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 10
+            maximum: 100
+            default: 10
+            example: 10
+        - name: stateCode
+          in: query
+          description: It includes records that match the exact state code. The allowed values will have to comply with the values of "State" codeset.
+          required: true
+          schema:
+            type: string
+            maxLength: 50
+            example: MH
+            pattern: '^[A-Za-z0-9]+$'
+            minLength: 1
+        - name: countryCode
+          in: query
+          description: It includes records that match the exact country code. The allowed values will have to comply with the values of "Country" codeset.
+          schema:
+            type: string
+            maxLength: 50
+            default: IN
+            example: IN
+            minLength: 1
+            pattern: '^[A-Za-z0-9]+$'
+      responses:
+        '200':
+          description: 'This status code indicates that the request was received, understood, and processed successfully by the server. The response body will contain the data requested by the client.'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ./models/PaginatedResponse.yaml
+                  - type: object
+                    x-stoplight:
+                      id: t4jgme5ul1q5a
+                    properties:
+                      data:
+                        $ref: ./models/BranchDistrict.yaml
+                        x-stoplight:
+                          id: b2xny6l352a65
+                        description: List of districts where bank branch exists
+              examples: {}
+        '400':
+          description: This status code indicates that the server could not understand or process the request due to invalid syntax or parameters. The client should modify the request and retry.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 400
+                    detail: string
+                    instance: 'http://example.com'
+                    validationErrors:
+                      - message: string
+                        properties:
+                          - string
+                        severity: ERROR
+        '500':
+          description: 'This status code means the server ran into an unexpected problem while processing your request. It indicates an issue on the server side, not with your input. Try refreshing or resubmitting your request after a short wait.'
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 500
+                    detail: string
+                    instance: 'http://example.com'
+      x-stoplight:
+        id: td2zvwlo3xmuq
+      tags:
+        - branches
+  /v1/consent-definitions:
+    get:
+      summary: Fetch Consent Definitions
+      description: List all the consent definitions.
+      operationId: fetchConsentDefinitions
+      parameters:
+        - schema:
+            type: integer
+            default: 1
+            example: 1
+            minimum: 1
+            maximum: 10000
+            format: int32
+          in: query
+          name: pageNo
+          description: It specifies the page number of the results to be returned
+          required: true
+        - schema:
+            type: integer
+            default: 10
+            example: 10
+            minimum: 1
+            maximum: 100
+            format: int32
+          in: query
+          name: pageSize
+          description: It determines the number of records to be returned per page
+          required: true
+      responses:
+        '200':
+          description: 'This status code indicates that the request was received, understood, and processed successfully by the server. The response body will contain the data requested by the client.'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ./models/PaginatedResponse.yaml
+                    x-stoplight:
+                      id: 64zkwtudr0zmd
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        description: List of consent definitions
+                        items:
+                          $ref: ./models/ConsentDefinition.yaml
+                          x-stoplight:
+                            id: urn0x1tc9ajlj
+              examples: {}
+        '400':
+          description: This status code indicates that the server could not understand or process the request due to invalid syntax or parameters. The client should modify the request and retry.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 400
+                    detail: string
+                    instance: 'http://example.com'
+                    validationErrors:
+                      - message: string
+                        properties:
+                          - string
+                        severity: ERROR
+        '500':
+          description: 'This status code means the server ran into an unexpected problem while processing your request. It indicates an issue on the server side, not with your input. Try refreshing or resubmitting your request after a short wait.'
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 500
+                    detail: string
+                    instance: 'http://example.com'
+      x-stoplight:
+        id: zct2cw8kb7tl9
+      tags:
+        - consents
+    parameters: []
+  /v1/states:
+    get:
+      summary: Fetch States
+      description: Retrieve list of states
+      operationId: fetchStates
+      parameters:
+        - name: pageNo
+          in: query
+          description: It specifies the page number of the results to be returned
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            maximum: 10000
+            default: 1
+            example: 1
+        - name: pageSize
+          in: query
+          description: It determines the number of records to be returned per page
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 10
+            maximum: 100
+            default: 10
+            example: 10
+        - name: stateName
+          in: query
+          description: It includes records that match the state name. The matching strategy (exact/partial) can be specified using stateMatch parameter
+          schema:
+            type: string
+            pattern: '^[A-Za-z]+(?:[ ''-][A-Za-z]+)*$'
+            minLength: 2
+            maxLength: 50
+            examples:
+              - Maharastra
+        - name: stateMatch
+          in: query
+          description: It specifies whether the state name match is exact or partial (default exact)
+          schema:
+            type: string
+            pattern: ^(EXACT|PARTIAL)$
+            minLength: 5
+            maxLength: 7
+            examples:
+              - EXACT
+            default: EXACT
+            enum:
+              - EXACT
+              - PARTIAL
+        - schema:
+            type: string
+            example: MH
+            pattern: '^[A-Za-z .:]+$'
+            minLength: 2
+            maxLength: 5
+          in: query
+          name: stateCode
+          description: It includes records that match the exact state code. The allowed values will have to comply with the values of "State" codeset.
+      responses:
+        '200':
+          description: 'This status code indicates that the request was received, understood, and processed successfully by the server. The response body will contain the data requested by the client.'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ./models/PaginatedResponse.yaml
+                    x-stoplight:
+                      id: sr99bpxfx14j2
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        description: List of states
+                        items:
+                          $ref: ./models/State.yaml
+                          x-stoplight:
+                            id: jqvmzjw9pl0sw
+              examples: {}
+        '400':
+          description: This status code indicates that the server could not understand or process the request due to invalid syntax or parameters. The client should modify the request and retry.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 400
+                    detail: string
+                    instance: 'http://example.com'
+                    validationErrors:
+                      - message: string
+                        properties:
+                          - string
+                        severity: ERROR
+        '500':
+          description: 'This status code means the server ran into an unexpected problem while processing your request. It indicates an issue on the server side, not with your input. Try refreshing or resubmitting your request after a short wait.'
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 500
+                    detail: string
+                    instance: 'http://example.com'
+      x-stoplight:
+        id: ii1qxr8m51gz1
+      tags:
+        - location
+    parameters: []
+  /v1/cities:
+    get:
+      summary: Fetch Cities
+      description: Retrieve list of cities
+      operationId: fetchCities
+      parameters:
+        - name: pageNo
+          in: query
+          description: It specifies the page number of the results to be returned
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            maximum: 100
+            default: 1
+            examples:
+              - 1
+        - name: pageSize
+          in: query
+          description: It determines the number of records to be returned per page
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 10
+            maximum: 100
+            examples:
+              - 10
+        - name: cityName
+          in: query
+          description: It includes records that match the city name. The matching strategy (exact/partial) can be specified using cityMatch parameter
+          schema:
+            type: string
+            pattern: '^[A-Za-z]+(?:[ ''-][A-Za-z]+)*$'
+            minLength: 2
+            maxLength: 50
+            examples:
+              - Mumbai
+        - name: cityMatch
+          in: query
+          description: It specifies whether the city name match is exact or partial (default exact)
+          schema:
+            type: string
+            pattern: ^(EXACT|PARTIAL)$
+            minLength: 5
+            maxLength: 7
+            examples:
+              - EXACT
+        - schema:
+            type: string
+            pattern: '^[A-Za-z .:]+$'
+            minLength: 2
+            maxLength: 5
+            example: MUM
+          in: query
+          name: cityCode
+          description: It includes records that match the exact city code. The allowed values will have to comply with the values of "City" codeset.
+      responses:
+        '200':
+          description: 'This status code indicates that the request was received, understood, and processed successfully by the server. The response body will contain the data requested by the client.'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ./models/PaginatedResponse.yaml
+                    x-stoplight:
+                      id: rl0zdfggrsaii
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        description: List of cities
+                        items:
+                          $ref: ./models/City.yaml
+                          x-stoplight:
+                            id: k5ruf5m1nztpv
+              examples: {}
+        '400':
+          description: This status code indicates that the server could not understand or process the request due to invalid syntax or parameters. The client should modify the request and retry.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 400
+                    detail: string
+                    instance: 'http://example.com'
+                    validationErrors:
+                      - message: string
+                        properties:
+                          - string
+                        severity: ERROR
+        '500':
+          description: 'This status code means the server ran into an unexpected problem while processing your request. It indicates an issue on the server side, not with your input. Try refreshing or resubmitting your request after a short wait.'
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    type: 'http://example.com'
+                    title: string
+                    status: 500
+                    detail: string
+                    instance: 'http://example.com'
+      x-stoplight:
+        id: xepshq6b3z6fn
+      tags:
+        - location
+    parameters: []
+  /v1/codesets:
+    get:
+      summary: Fetch Codesets
+      operationId: fetchCodesets
+      parameters:
+        - name: pageNo
+          in: query
+          description: It specifies the page number of the results to be returned
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            maximum: 10000
+            examples:
+              - 1
+            default: 1
+        - name: pageSize
+          in: query
+          description: It determines the number of records to be returned per page
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 10
+            maximum: 100
+            examples:
+              - 10
+            default: 10
+      responses:
+        '200':
+          description: 'This status code indicates that the request was received, understood, and processed successfully by the server. The response body will contain the data requested by the client.'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ./models/PaginatedResponse.yaml
+                    x-stoplight:
+                      id: slyq7sehukfy6
+                  - type: object
+                    required:
+                      - data
+                    properties:
+                      data:
+                        type: array
+                        description: The list of codesets
+                        items:
+                          $ref: ./models/Codeset.yaml
+              examples: {}
+        '400':
+          description: This status code indicates that the server could not understand or process the request due to invalid syntax or parameters. The client should modify the request and retry.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+        '500':
+          description: 'This status code means the server ran into an unexpected problem while processing your request. It indicates an issue on the server side, not with your input. Try refreshing or resubmitting your request after a short wait.'
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+      x-stoplight:
+        id: 5k6wskfqkwz38
+      description: Retrieves all available codesets used within the application.
+      tags:
+        - codesets
+  '/v1/codesets/{codeset}':
+    get:
+      summary: Fetch Codeset Values
+      operationId: get-v1-data-codesets-codes
+      parameters:
+        - name: codeset
+          in: path
+          description: 'The name of the codeset '
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-zA-Z0-9 ]+$'
+            minLength: 1
+            maxLength: 100
+            examples:
+              - InterestPayment
+      responses:
+        '200':
+          description: 'This status code indicates that the request was received, understood, and processed successfully by the server. The response body will contain the data requested by the client.'
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    description: The list of codes in an active codeset
+                    items:
+                      $ref: ./models/Code.yaml
+              examples: {}
+        '400':
+          description: This status code indicates that the server could not understand or process the request due to invalid syntax or parameters. The client should modify the request and retry.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+        '500':
+          description: 'This status code means the server ran into an unexpected problem while processing your request. It indicates an issue on the server side, not with your input. Try refreshing or resubmitting your request after a short wait.'
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+      x-stoplight:
+        id: xoq72ejb3y1lq
+      description: Retrieves the codes associated with the specified codeset.
+      tags:
+        - codesets
+    parameters:
+      - schema:
+          type: string
+          example: Gender
+          pattern: '^[a-zA-Z0-9]+$'
+          minLength: 1
+          maxLength: 50
+        name: codeset
+        in: path
+        required: true
+        description: The codeset name
+x-internal: true

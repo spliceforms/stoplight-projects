@@ -1,0 +1,23 @@
+type: object
+title: NomineeAddress
+description: Specifies the complete address details of the nominee.
+x-package: nomination
+x-stoplight:
+  id: u5dcf6yibq6yq
+required:
+  - line
+  - cityCode
+  - stateCode
+  - countryCode
+  - pinCode
+properties:
+  line:
+    $ref: 'stoplight://resources/overrides/cJk4qn60FYo'
+  cityCode:
+    $ref: 'stoplight://resources/overrides/e716yeYODOc'
+  stateCode:
+    $ref: 'stoplight://resources/overrides/Cvh9dy4b2Bc'
+  countryCode:
+    $ref: 'stoplight://resources/overrides/TefCsIHCKhs'
+  pinCode:
+    $ref: 'stoplight://resources/overrides/Ov8lL8w72Jo'

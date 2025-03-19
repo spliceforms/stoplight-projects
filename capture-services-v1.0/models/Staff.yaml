@@ -1,0 +1,16 @@
+type: object
+title: Staff
+description: It captures key details of a bank staff involved in processing an application
+x-stoplight:
+  id: 36aobxkwelk2l
+required:
+  - branchCode
+  - lgCode
+  - lcCode
+properties:
+  branchCode:
+    $ref: 'stoplight://resources/overrides/DkpDaBt77Zw'
+  lgCode:
+    $ref: 'stoplight://resources/overrides/gHuU3wTRjT0'
+  lcCode:
+    $ref: 'stoplight://resources/overrides/pZLZAOMcf2s'

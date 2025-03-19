@@ -1,0 +1,13 @@
+type: object
+title: IDToken
+description: The ID token
+x-stoplight:
+  id: q19i5cca208yy
+required:
+  - token
+  - expiresAt
+properties:
+  token:
+    $ref: 'stoplight://resources/overrides/ZTFcuZFw8X0'
+  expiresAt:
+    $ref: 'stoplight://resources/overrides/Dudc9ZZNUk4'

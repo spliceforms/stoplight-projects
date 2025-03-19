@@ -1,0 +1,12 @@
+title: BankAccountOwnershipCheckResponse
+x-stoplight:
+  id: j3l1o3ozmith2
+type: object
+required:
+  - isValid
+properties:
+  isValid:
+    type: boolean
+    x-stoplight:
+      id: 8nuki30m5guzh
+    description: indicates if the bank account ownership check was successful

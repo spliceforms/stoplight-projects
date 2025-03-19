@@ -1,0 +1,35 @@
+title: BankAccountOwnershipCheckRequest
+x-stoplight:
+  id: a8dq2g4umclnn
+type: object
+required:
+  - accountHolderName
+  - accountNo
+  - accountType
+  - ifsc
+properties:
+  accountHolderName:
+    $ref: 'stoplight://resources/overrides/5yNhk1Hgfig'
+    x-stoplight:
+      id: 1eo5al4wfwbip
+    description: Account holder name associated with Bank.
+  accountNo:
+    $ref: 'stoplight://resources/overrides/swJoliwLU7s'
+    x-stoplight:
+      id: t758265ua6izh
+    description: A unique identifier number assigned to a bank account.
+  accountType:
+    $ref: 'stoplight://resources/overrides/tCwO6x9ZNk0'
+    x-stoplight:
+      id: k4lfugpho08kd
+    description: Specifies the type of bank account associated with the transaction or request. The allowed values will have to comply with the values of codeset.
+  ifsc:
+    $ref: 'stoplight://resources/overrides/5js4tqEmILQ'
+    x-stoplight:
+      id: fhn7mpxnhqjvd
+    description: A unique 11-character alphanumeric code used to identify specific bank branches.
+  bankCode:
+    $ref: 'stoplight://resources/overrides/EDRPdrQwsaA'
+    x-stoplight:
+      id: 307xbcazmb0cr
+    description: The name of the bank.

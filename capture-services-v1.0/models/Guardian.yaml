@@ -1,0 +1,21 @@
+type: object
+title: Guardian
+description: It refers to the information related to the person who will act as a legal guardian for the nominee in case the nominee is a minor or unable to manage their own affairs.
+x-stoplight:
+  id: lghrra139m815
+required:
+  - name
+  - dob
+  - address
+properties:
+  name:
+    $ref: 'stoplight://resources/overrides/5yNhk1Hgfig'
+    description: Full name of the guardian
+  dob:
+    $ref: 'stoplight://resources/overrides/UEKAfGKnXtA'
+    description: 'The exact date on which the guardian was born, including the day, month, and year.'
+  relationshipWithNominee:
+    $ref: 'stoplight://resources/overrides/rCj13ihpGbg'
+    description: Specifies the nature of the connection between two parties. The allowed values will have to comply with the values of "nomineeRelationCode" codeset.
+  address:
+    $ref: ./GuardianAddress.yaml

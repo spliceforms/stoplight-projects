@@ -1,0 +1,13 @@
+type: object
+title: AccessToken
+description: The access tokem
+x-stoplight:
+  id: htg0m1yjnmnmt
+required:
+  - token
+  - expiresAt
+properties:
+  token:
+    $ref: 'stoplight://resources/overrides/ZTFcuZFw8X0'
+  expiresAt:
+    $ref: 'stoplight://resources/overrides/Dudc9ZZNUk4'

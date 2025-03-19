@@ -1,0 +1,80 @@
+type: object
+x-stoplight:
+  id: bua7t4hbaep0e
+title: BranchAddress
+description: Specifies the complete address details of branch
+id: 97ps4jh19l4j7
+required:
+  - line1
+  - line2
+  - line3
+  - cityCode
+  - cityName
+  - districtCode
+  - districtName
+  - stateCode
+  - stateName
+  - countryCode
+  - countryName
+  - pinCode
+properties:
+  line1:
+    $ref: 'stoplight://resources/overrides/5HU7oy6KrWo'
+    description: 'It includes details such as the building number, street name, and apartment or suite number.'
+    x-stoplight:
+      id: yknvs70fagczq
+  line2:
+    $ref: 'stoplight://resources/overrides/5HU7oy6KrWo'
+    description: 'It may include secondary information like landmarks, floor numbers, or specific sub-locations within a larger property.'
+    x-stoplight:
+      id: h336d31hn9dxq
+  line3:
+    $ref: 'stoplight://resources/overrides/5HU7oy6KrWo'
+    description: It includes details such as neighborhood or other location identifiers.
+    x-stoplight:
+      id: uhmifbux1potr
+  cityCode:
+    $ref: 'stoplight://resources/overrides/e716yeYODOc'
+    x-stoplight:
+      id: 40estq0jjmahv
+    description: The code of the city where the address is located. The allowed values will have to comply with the values of "City" codeset.
+  cityName:
+    $ref: 'stoplight://resources/overrides/uacPPo0KgqI'
+    x-stoplight:
+      id: h2w71v3wssmrx
+    description: The name of the city where the address is located.
+  districtCode:
+    $ref: 'stoplight://resources/overrides/1hOLdlr48PY'
+    x-stoplight:
+      id: m7h2qhrh9t8eh
+    description: The code of the district where the address is located. The allowed values will have to comply with the values of "District" codeset.
+  districtName:
+    $ref: 'stoplight://resources/overrides/FKvyeY13Gko'
+    x-stoplight:
+      id: 4x95to04p87wo
+    description: The name of the district where the address is located.
+  stateCode:
+    $ref: 'stoplight://resources/overrides/Cvh9dy4b2Bc'
+    x-stoplight:
+      id: vu7xx1eidcpc6
+    description: The code of the state where the address is located. The allowed values will have to comply with the values of "State" codeset.
+  stateName:
+    $ref: 'stoplight://resources/overrides/GmiZxW2vxw4'
+    x-stoplight:
+      id: q8qudo0x22z3f
+    description: The name of the state where the address is located.
+  countryCode:
+    $ref: 'stoplight://resources/overrides/TefCsIHCKhs'
+    x-stoplight:
+      id: 14o5xxgnc24ef
+    description: The code of the country where the address is located. The allowed values will have to comply with the values of "Country" codeset.
+  countryName:
+    $ref: 'stoplight://resources/overrides/Zt82KlnOynE'
+    x-stoplight:
+      id: x600wkw9qmip3
+    description: The name of the country where the address is located.
+  pinCode:
+    $ref: 'stoplight://resources/overrides/Ov8lL8w72Jo'
+    x-stoplight:
+      id: s3085fpulpj33
+    description: The postal or ZIP code associated with the address to facilitate accurate delivery and identification.

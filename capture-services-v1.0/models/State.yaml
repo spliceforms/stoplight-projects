@@ -1,0 +1,27 @@
+type: object
+x-stoplight:
+  id: bb23oh0qpyztr
+title: State
+description: Specifies the details of state and country
+required:
+  - code
+  - name
+  - countryCode
+  - countryName
+properties:
+  code:
+    $ref: 'stoplight://resources/overrides/Cvh9dy4b2Bc'
+    x-stoplight:
+      id: be80x1rzwkxa1
+  name:
+    $ref: 'stoplight://resources/overrides/GmiZxW2vxw4'
+    x-stoplight:
+      id: 8un2kp2txvzi8
+  countryCode:
+    $ref: 'stoplight://resources/overrides/TefCsIHCKhs'
+    x-stoplight:
+      id: d6mzxot9d2a4i
+  countryName:
+    $ref: 'stoplight://resources/overrides/Zt82KlnOynE'
+    x-stoplight:
+      id: 71h742i9bpd0o

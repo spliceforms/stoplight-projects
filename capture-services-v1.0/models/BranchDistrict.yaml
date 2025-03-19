@@ -1,0 +1,17 @@
+type: object
+x-stoplight:
+  id: 4v5t11513sj15
+title: BranchDistrict
+description: It specifies the details of District where bank branch is available
+required:
+  - code
+  - name
+properties:
+  code:
+    $ref: 'stoplight://resources/overrides/1hOLdlr48PY'
+    x-stoplight:
+      id: onf7trujncsrl
+  name:
+    $ref: 'stoplight://resources/overrides/FKvyeY13Gko'
+    x-stoplight:
+      id: wd4fx2fjbi8ri

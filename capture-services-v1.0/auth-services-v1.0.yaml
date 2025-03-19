@@ -1,0 +1,274 @@
+openapi: 3.1.0
+x-stoplight:
+  id: znydl40fblitz
+info:
+  version: '1.0'
+  title: Auth Services
+  summary: List of services for customer authentication
+  description: This API provides endpoints to perform customer authentication e.g. using OTP verification
+  contact:
+    name: akhilesh
+    url: 'https://spliceforms.com/'
+    email: api@apibanking.com
+  license:
+    url: 'https://spliceforms.com/'
+    name: Commercial
+servers:
+  - url: 'https://api.stitch.spliceforms.com/capture'
+tags:
+  - name: OTP Auth
+    description: API endpoints for token issuance on successful OTP authentication
+paths:
+  /v1/auth/otp/initiate:
+    post:
+      summary: Initiate OTP Authentication Flow
+      description: |-
+        This endpoint initiates the user authentication flow using user identity information. It includes either the combination of mobile number and PAN or mobile number and date of birth.
+        It sends an OTP to the mobile number provided by the user.
+      operationId: initiateAuthentication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OTPChallengeRequest'
+      responses:
+        '200':
+          description: Returns the OTP challenge response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OTPChallengeResponse'
+        '400':
+          description: This status code indicates that the server could not understand or process the request due to invalid syntax or parameters. The client should modify the request and retry.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+        '500':
+          description: 'This status code means the server ran into an unexpected problem while processing your request. It indicates an issue on the server side, not with your input. Try refreshing or resubmitting your request after a short wait.'
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    title: string
+                    status: 500
+                    detail: string
+                    instance: 'http://example.com'
+      servers:
+        - url: 'https://api.stitch.spliceforms.com/capture'
+      x-stoplight:
+        id: 2ua89gmlwh9pu
+      tags:
+        - OTP Auth
+  /v1/auth/otp/resend:
+    post:
+      summary: Resend OTP
+      description: This endpoint resends the OTP for ongoing authentication session.
+      operationId: resendOTP
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OTPChallengeRequest'
+      responses:
+        '200':
+          description: Returns the OTP challenge response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OTPChallengeResponse'
+        '400':
+          description: This status code indicates that the server could not understand or process the request due to invalid syntax or parameters. The client should modify the request and retry.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    title: string
+                    status: 400
+                    detail: string
+                    instance: 'http://example.com'
+                    validationErrors:
+                      - message: string
+                        properties:
+                          - string
+                        severity: ERROR
+        '500':
+          description: 'This status code means the server ran into an unexpected problem while processing your request. It indicates an issue on the server side, not with your input. Try refreshing or resubmitting your request after a short wait.'
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    title: string
+                    status: 500
+                    detail: string
+                    instance: 'http://example.com'
+      servers:
+        - url: 'https://api.stitch.spliceforms.com/capture'
+      x-stoplight:
+        id: g1gz6gmxzhc3u
+      tags:
+        - OTP Auth
+  /v1/auth/otp/token:
+    post:
+      summary: Verify OTP and Issue Token
+      description: This endpoint verifies the OTP and returns access and ID tokens post successful OTP verification
+      operationId: verifyOTPAndIssueToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OTPChallengeAnswer'
+      responses:
+        '200':
+          description: Returns the access token & ID token on successful OTP verification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OTPAuthResponse'
+        '400':
+          description: This status code indicates that the server could not understand or process the request due to invalid syntax or parameters. The client should modify the request and retry.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    title: string
+                    status: 400
+                    detail: string
+                    instance: 'http://example.com'
+                    validationErrors:
+                      - message: string
+                        properties:
+                          - string
+                        severity: ERROR
+        '500':
+          description: 'This status code means the server ran into an unexpected problem while processing your request. It indicates an issue on the server side, not with your input. Try refreshing or resubmitting your request after a short wait.'
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+              examples:
+                Example 1:
+                  value:
+                    title: string
+                    status: 500
+                    detail: string
+                    instance: 'http://example.com'
+      servers:
+        - url: 'https://api.stitch.spliceforms.com/capture'
+      x-stoplight:
+        id: 2s3ghs8yax70m
+      tags:
+        - OTP Auth
+components:
+  schemas:
+    OTPChallengeRequest:
+      type: object
+      title: OTPChallengeRequest
+      x-stoplight:
+        id: r7ybne8md89ak
+      required:
+        - channelId
+        - identity
+      properties:
+        channelId:
+          $ref: 'stoplight://resources/overrides/GirFFZFRFvU'
+        identity:
+          oneOf:
+            - $ref: '#/components/schemas/MobileAndDob'
+            - $ref: '#/components/schemas/MobileAndPan'
+    MobileAndDob:
+      type: object
+      title: MobileAndDob
+      x-stoplight:
+        id: mupp5eht54exo
+      required:
+        - mobileNo
+        - dob
+      properties:
+        mobileNo:
+          $ref: 'stoplight://resources/overrides/LT9qrA1aRC4'
+        dob:
+          $ref: 'stoplight://resources/overrides/UEKAfGKnXtA'
+    MobileAndPan:
+      type: object
+      title: MobileAndPan
+      x-stoplight:
+        id: w09k4eguwygih
+      required:
+        - mobileNo
+        - pan
+      properties:
+        mobileNo:
+          $ref: 'stoplight://resources/overrides/LT9qrA1aRC4'
+        pan:
+          $ref: 'stoplight://resources/overrides/iQ8vF5vM3JE'
+    OTPChallengeResponse:
+      type: object
+      title: OTPChallengeResponse
+      x-stoplight:
+        id: flc3tvrlwt18y
+      required:
+        - expiresAt
+        - session
+      properties:
+        expiresAt:
+          $ref: 'stoplight://resources/overrides/fUrz7DdiN1w'
+          description: The timestamp when the OTP will expire
+        remainingAttempts:
+          type: integer
+          description: The number of attempts remaining for the user to enter OTP
+          format: int32
+          minimum: 0
+          maximum: 5
+          examples:
+            - 3
+        session:
+          $ref: '#/components/schemas/OTPAuthSession'
+    OTPAuthSession:
+      type: string
+      title: OTPAuthSession
+      description: Encrypted string that contains OTP Auth session information
+      pattern: ^.*$
+      minLength: 1
+      maxLength: 1000
+      examples:
+        - dsf23rfvdf
+      x-stoplight:
+        id: hlir38dud4lqd
+    OTPChallengeAnswer:
+      type: object
+      title: OTPChallengeAnswer
+      x-stoplight:
+        id: o3ws0wqyuieha
+      required:
+        - session
+        - otp
+      properties:
+        session:
+          $ref: '#/components/schemas/OTPAuthSession'
+        otp:
+          $ref: 'stoplight://resources/overrides/BjPbf7v8HHs'
+    OTPAuthResponse:
+      type: object
+      title: OTPAuthResponse
+      x-stoplight:
+        id: 8gfzq9ydu7h4h
+      required:
+        - accessToken
+      properties:
+        accessToken:
+          $ref: ./models/AccessToken.yaml
+        idToken:
+          $ref: ./models/IDToken.yaml

@@ -1,0 +1,17 @@
+type: object
+x-stoplight:
+  id: 6v33x30o3czcu
+title: BranchState
+description: 'Specifies the details of state where bank branch is available '
+required:
+  - code
+  - name
+properties:
+  code:
+    $ref: 'stoplight://resources/overrides/Cvh9dy4b2Bc'
+    x-stoplight:
+      id: 756h783k5zwyu
+  name:
+    $ref: 'stoplight://resources/overrides/GmiZxW2vxw4'
+    x-stoplight:
+      id: aiiy86vttn874
