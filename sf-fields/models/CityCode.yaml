@@ -1,0 +1,10 @@
+type: string
+title: CityCode
+description: The code of the city where the address is located.
+pattern: '^[A-Za-z0-9]+$'
+minLength: 1
+maxLength: 20
+examples:
+  - Mumbai
+x-stoplight:
+  id: p5ke6c4fuyreu

@@ -1,0 +1,11 @@
+type: string
+title: Ifsc
+description: A unique 11-character alphanumeric code used to identify specific bank branches.
+pattern: '^[A-Z]{4}0[0-9A-Z]{6}$'
+minLength: 11
+maxLength: 11
+examples:
+  - HDFC0000543
+  - SBI00012345
+x-stoplight:
+  id: 2ysmfud8lwmd4

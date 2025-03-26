@@ -1,0 +1,10 @@
+type: string
+x-stoplight:
+  id: lmm1yfrc6pgzy
+title: CityName
+description: The name of the city where the address is located.
+pattern: '^[A-Za-z0-9]+$'
+minLength: 1
+maxLength: 40
+examples:
+  - Mumbai

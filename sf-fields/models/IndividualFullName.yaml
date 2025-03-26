@@ -1,0 +1,10 @@
+type: string
+title: IndividualFullName
+description: 'Full name of the individual including first, middle and last.'
+pattern: '^[a-zA-Z0-9,\-.:@()_\\ ]{1,40}$'
+minLength: 1
+maxLength: 40
+examples:
+  - Ranbir Rishi Kapoor
+x-stoplight:
+  id: p3mjt985z8w53

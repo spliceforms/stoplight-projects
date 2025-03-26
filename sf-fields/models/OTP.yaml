@@ -1,0 +1,10 @@
+type: string
+title: OTP
+description: otp value
+pattern: '^[0-9]+$'
+minLength: 1
+maxLength: 6
+examples:
+  - '123456'
+x-stoplight:
+  id: sr0i7ziwysvhz

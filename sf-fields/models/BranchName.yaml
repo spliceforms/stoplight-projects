@@ -1,0 +1,9 @@
+type: string
+description: The name of the branch.
+pattern: '^[A-Za-z ]+'
+minLength: 1
+maxLength: 40
+examples:
+  - Vikroli
+x-stoplight:
+  id: f153a03zbu911

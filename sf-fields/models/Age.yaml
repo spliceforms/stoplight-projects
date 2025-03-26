@@ -1,0 +1,9 @@
+title: Age
+x-stoplight:
+  id: uqotc4jvaaaur
+type: integer
+format: int32
+minimum: 1
+maximum: 199
+example: 20
+description: 'The age'

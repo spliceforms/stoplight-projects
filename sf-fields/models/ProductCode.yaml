@@ -1,0 +1,10 @@
+type: string
+title: ProductCode
+description: Specifies the unique code used to identify a specific product within the bank's system
+pattern: '^[0-9]{3,5}$'
+minLength: 3
+maxLength: 5
+examples:
+  - '193'
+x-stoplight:
+  id: vbe3mx0alkbom

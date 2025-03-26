@@ -1,0 +1,9 @@
+title: ApplicationFormVersion
+x-stoplight:
+  id: 4gj8wer3p5ho9
+type: string
+description: 'Version is a specific iteration of a form, identified by a version number.'
+pattern: '^[a-zA-Z0-9]+$'
+minLength: 1
+example: '113'
+maxLength: 4

@@ -1,0 +1,9 @@
+title: Currency
+x-stoplight:
+  id: oyzsdsqa19wdz
+type: string
+pattern: '^[A-Z]+$'
+example: INR
+minLength: 1
+maxLength: 10
+description: 'Currency code'

@@ -1,0 +1,10 @@
+type: string
+title: Token
+description: JWT token
+pattern: ^.*$
+minLength: 1
+maxLength: 5000
+examples:
+  - sdf3223r2
+x-stoplight:
+  id: 51g2k7zgockax

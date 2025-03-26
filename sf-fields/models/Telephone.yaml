@@ -1,0 +1,10 @@
+type: string
+title: Telephone
+description: Specifies the contact telephone number for an individual or organization.
+examples:
+  - 2226781798
+x-stoplight:
+  id: wa56of9qdpenm
+maxLength: 12
+pattern: '^\(?\d{2,4}\)?[-.\s]?\d{6,8}$'
+minLength: 7

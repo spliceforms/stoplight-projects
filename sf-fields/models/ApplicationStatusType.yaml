@@ -1,0 +1,14 @@
+type: string
+enum:
+  - PROGRESSING
+  - REJECTED
+  - COMPLETED
+title: ApplicationStatusType
+description: Application processing status types
+pattern: '^[A-Z_]+$'
+minLength: 8
+maxLength: 11
+examples:
+  - PROGRESSING
+x-stoplight:
+  id: rvo3si1w32lep

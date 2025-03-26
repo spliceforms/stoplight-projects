@@ -1,0 +1,9 @@
+type: string
+title: HTMLString
+pattern: ^.*$
+minLength: 1
+maxLength: 999999999999999
+examples:
+  - <html></html>
+x-stoplight:
+  id: 8lmmdxs0n50mg

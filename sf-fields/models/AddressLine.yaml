@@ -1,0 +1,10 @@
+title: AddressLine
+x-stoplight:
+  id: qa7ray5love1e
+type: string
+pattern: '^[A-Za-z0-9,\-.:@()_\\''# ]+$'
+minLength: 5
+maxLength: 40
+examples:
+  - Near Kailash Complex
+description: 'It includes details such as the building number, street name, and apartment or suite number.'

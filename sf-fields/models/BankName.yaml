@@ -1,0 +1,10 @@
+type: string
+x-stoplight:
+  id: ko3jr123o63cg
+description: The name of the bank.
+pattern: '^[A-Za-z ]+'
+minLength: 1
+maxLength: 40
+examples:
+  - State Bank of India
+title: BankName

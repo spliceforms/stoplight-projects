@@ -1,0 +1,10 @@
+type: string
+x-stoplight:
+  id: bcpi617avbiha
+title: CountryName
+description: The name of the country where the address is located.
+pattern: '^[A-Za-z0-9]+$'
+minLength: 1
+maxLength: 40
+examples:
+  - India

@@ -1,0 +1,10 @@
+type: string
+title: AccountNo
+description: A unique identifier number assigned to a bank account.
+pattern: '^\d{1,14}$'
+minLength: 1
+maxLength: 14
+examples:
+  - '102001053410'
+x-stoplight:
+  id: bqn30te6goh51

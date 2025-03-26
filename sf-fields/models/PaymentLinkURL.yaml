@@ -1,0 +1,11 @@
+title: PaymentLinkURL
+x-stoplight:
+  id: xmkk56jnkuqc0
+type: string
+description: 'Defines the endpoint URL provided by the payment service where the payment transaction is initiated and processed, allowing secure redirection or API-based payment execution.'
+format: uri
+pattern: '^https?:\/\/([a-zA-Z0-9.-]+\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\/?[^\s]*$'
+minLength: 10
+maxLength: 2048
+examples:
+  - 'https://example.com/resources?query=123'

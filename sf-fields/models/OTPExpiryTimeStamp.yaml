@@ -1,0 +1,11 @@
+title: OTPExpiryTimeStamp
+x-stoplight:
+  id: 54b6b9df3a3bc
+type: string
+description: The timestamp when OTP expires
+format: date-time
+pattern: '^[0-9-: ]+$'
+minLength: 19
+maxLength: 19
+examples:
+  - '2025-04-12 12:12:12'

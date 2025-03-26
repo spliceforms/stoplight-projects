@@ -1,0 +1,10 @@
+type: string
+title: MobileNo
+description: Specifies the contact mobile number for an individual.
+pattern: '^(?!0+$)(\+\d{1,3}[- ]?)?(?!0+$)\d{10}$'
+minLength: 10
+maxLength: 14
+examples:
+  - '8082186583'
+x-stoplight:
+  id: yxq2dj1abjmsl

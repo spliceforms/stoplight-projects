@@ -1,0 +1,10 @@
+type: string
+x-stoplight:
+  id: zkeuqwfyd38q3
+title: BankCode
+description: The unique code representing the specific bank
+pattern: '^[A-Z0-9]+'
+minLength: 3
+maxLength: 10
+examples:
+  - 'SBI'

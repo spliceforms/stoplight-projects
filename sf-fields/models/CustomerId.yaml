@@ -1,0 +1,9 @@
+type: number
+title: CustomerId
+description: A unique identifier assigned to customers by the bank
+minimum: 1
+maximum: 999999999
+examples:
+  - 116728060
+x-stoplight:
+  id: qhhktp0w30p6q

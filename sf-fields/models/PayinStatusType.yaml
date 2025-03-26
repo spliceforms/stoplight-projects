@@ -1,0 +1,16 @@
+type: string
+enum:
+  - PENDING
+  - CAPTURED
+  - FAILED
+  - CANCELLED
+  - ABANDONED
+title: PayinStatusType
+description: List of payin status types
+pattern: '^[A-Z_]+$'
+minLength: 6
+maxLength: 9
+examples:
+  - CAPTURED
+x-stoplight:
+  id: ead3vqq30l65z

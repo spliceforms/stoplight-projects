@@ -1,0 +1,9 @@
+type: string
+title: ConsentId
+pattern: '^[A-Z0-9]+'
+minLength: 1
+maxLength: 20
+examples:
+  - 12334344
+x-stoplight:
+  id: bg55z1wbqd120

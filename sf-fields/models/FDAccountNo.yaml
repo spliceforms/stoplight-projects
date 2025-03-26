@@ -1,0 +1,10 @@
+type: string
+title: FDAccountNo
+description: A unique identifier number assigned to a Fixed deposit account.
+pattern: '^\d{1,14}$'
+minLength: 1
+maxLength: 14
+examples:
+  - '530001053410'
+x-stoplight:
+  id: semdxb7hzhdau

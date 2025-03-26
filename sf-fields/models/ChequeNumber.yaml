@@ -1,0 +1,7 @@
+type: string
+description: Specifies the unique numeric identifier printed on a cheque used for tracking and processing cheque-based transactions.
+examples:
+  - 123456
+pattern: '^[0-9]$'
+minLength: 6
+maxLength: 6

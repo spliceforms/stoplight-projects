@@ -1,0 +1,7 @@
+type: number
+title: InterestRate
+description: The percentage at which interest is to be earned on a deposit over the specified tenure.
+examples:
+  - 9.5
+x-stoplight:
+  id: c94xnqw8jmsdn

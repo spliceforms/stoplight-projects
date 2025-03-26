@@ -1,0 +1,10 @@
+type: string
+title: ConsentReferenceId
+description: Indicates the unique reference to identify the consents which are stored against the application
+pattern: '^[A-Za-z0-9]+$'
+minLength: 1
+maxLength: 50
+examples:
+  - '12331244'
+x-stoplight:
+  id: 397v7krbrj6oa

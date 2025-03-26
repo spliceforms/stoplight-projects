@@ -1,0 +1,10 @@
+type: string
+title: PaymentTransactionId
+description: Unique reference id returned by payment gateway for the payment request
+pattern: '^[A-Za-z0-9-_]+'
+minLength: 1
+maxLength: 50
+examples:
+  - PG129292736
+x-stoplight:
+  id: jzjv4abed72le

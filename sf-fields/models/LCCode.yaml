@@ -1,0 +1,10 @@
+title: LCCode
+x-stoplight:
+  id: 8h2qrdrrvaf5a
+type: string
+description: 'Specifies the unique identifier, typically the employee ID, of the bank employee who converted the lead.'
+pattern: '^[A-Z0-9]{0,7}$'
+minLength: 1
+maxLength: 7
+examples:
+  - C098

@@ -1,0 +1,13 @@
+title: HTTPMethodType
+x-stoplight:
+  id: m1d4i94tuhntd
+type: string
+enum:
+  - POST
+  - GET
+description: 'Specifies the HTTP verb (e.g., GET, POST) to be used when invoking the payment link, ensuring that the request is formatted correctly for the payment gateway.'
+pattern: '^[A-Z]+$'
+minLength: 3
+maxLength: 4
+examples:
+  - POST

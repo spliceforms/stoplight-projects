@@ -1,0 +1,10 @@
+type: string
+title: ApplicationFormId
+description: The unique code representing the specific application form of bank.
+pattern: '^\d{1,10}$'
+minLength: 1
+maxLength: 10
+examples:
+  - '92828'
+x-stoplight:
+  id: 5y6d9y21s14hy

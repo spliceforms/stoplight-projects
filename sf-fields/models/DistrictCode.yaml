@@ -1,0 +1,10 @@
+type: string
+x-stoplight:
+  id: 17fg0gfqkbrcr
+title: DistrictCode
+description: The code of the district where the address is located.
+pattern: '^[A-Za-z0-9]+$'
+minLength: 1
+maxLength: 20
+examples:
+  - Mumbai

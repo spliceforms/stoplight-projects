@@ -1,0 +1,10 @@
+type: string
+title: ChannelId
+description: The unique code representing the specific channel.
+pattern: '^\d{1,5}$'
+minLength: 1
+maxLength: 5
+examples:
+  - '10907'
+x-stoplight:
+  id: 84fhu6lzbu8nv

@@ -1,0 +1,10 @@
+type: string
+title: PaymentRequestReferenceNo
+description: Unique reference number generated and sent by channel application in the payin request
+pattern: '^[A-Za-z0-9_-]+$'
+minLength: 1
+maxLength: 50
+examples:
+  - '122134434324'
+x-stoplight:
+  id: n3jvbhyrl9qhp

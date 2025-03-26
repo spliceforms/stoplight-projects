@@ -1,0 +1,11 @@
+type: string
+title: Dob
+description: 'The exact date on which the individual was born, including the day, month, and year.'
+format: date
+pattern: '^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$'
+minLength: 10
+maxLength: 10
+examples:
+  - '1998-02-01'
+x-stoplight:
+  id: yshjw5d3xu1ft

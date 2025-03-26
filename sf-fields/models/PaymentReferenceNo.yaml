@@ -1,0 +1,10 @@
+type: string
+title: PaymentReferenceNo
+description: Specifies the unique identifier assigned to a payment transaction.
+pattern: '^[a-zA-Z0-9]{1,36}$'
+minLength: 1
+maxLength: 36
+examples:
+  - J7PJR3QKZMJDWZP
+x-stoplight:
+  id: 3hcj967jl45tw

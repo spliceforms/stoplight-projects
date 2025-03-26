@@ -1,0 +1,8 @@
+title: Longitude
+x-stoplight:
+  id: r0u5kelbqdxco
+type: number
+example: 77.231667
+minimum: -180
+maximum: 180
+description: It helps pinpoint the exact location of a branch on a map.

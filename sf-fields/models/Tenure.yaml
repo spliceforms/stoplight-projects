@@ -1,0 +1,10 @@
+type: string
+title: Tenure
+description: 'This indicates the period in xsd:duration format'
+pattern: ^P(\d+M)?(\d+D)?$
+minLength: 3
+maxLength: 8
+examples:
+  - P6M5D
+x-stoplight:
+  id: xhhrebns1yy24

@@ -1,0 +1,11 @@
+title: ValueDate
+type: string
+description: 'Indicates the value date on which funds are considered available or effective for transactions such as payments, deposits, or settlements'
+format: date
+pattern: '^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$'
+minLength: 10
+maxLength: 10
+examples:
+  - '2022-01-12'
+x-stoplight:
+  id: ajcu7ilvp0c7e

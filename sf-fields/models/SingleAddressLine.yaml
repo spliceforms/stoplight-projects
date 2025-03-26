@@ -1,0 +1,11 @@
+type: string
+title: SingleAddressLine
+description: 'It includes the building number, street name, apartment or suite number, and any additional details that are necessary to pinpoint the exact location. This does not include other address fields like city, state, pin code'
+pattern: '^[A-Za-z0-9,\-.:@()_\\''# ]+$'
+minLength: 1
+maxLength: 40
+examples:
+  - 'C 701 Lodha Belair, Vaishali Nagar'
+x-package: common
+x-stoplight:
+  id: zsytwpvwetm2p

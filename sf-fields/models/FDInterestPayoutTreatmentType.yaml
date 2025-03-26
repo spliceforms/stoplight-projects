@@ -1,0 +1,14 @@
+type: string
+enum:
+  - MIP
+  - QIP
+  - REINVEST
+title: FDInterestPayoutTreatmentType
+description: The interval at which interest earned on a deposit is paid out to the account holder.
+pattern: '^[A-Z_]+$'
+minLength: 3
+maxLength: 8
+examples:
+  - MIP
+x-stoplight:
+  id: 2qggif6v3y6a8

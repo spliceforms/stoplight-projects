@@ -1,0 +1,10 @@
+type: string
+title: Vpa
+description: Virtual payment address for UPI Transactions.
+pattern: '^[a-zA-Z0-9._-]{2,35}@[a-zA-Z0-9]{3,20}$'
+minLength: 1
+maxLength: 255
+examples:
+  - ranbir.kapoor@paytm
+x-stoplight:
+  id: 3rtzj68r2bcrq

@@ -1,0 +1,10 @@
+type: string
+title: RelationshipWithApplicant
+description: Relationship of Nominee with Applicant/Depositor
+pattern: '^[A-Za-z0-9]+$'
+minLength: 1
+maxLength: 50
+examples:
+  - brother
+x-stoplight:
+  id: v7rgdas8c4h3b

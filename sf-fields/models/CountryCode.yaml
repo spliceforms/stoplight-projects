@@ -1,0 +1,10 @@
+type: string
+title: CountryCode
+description: The code of the country where the address is located.
+pattern: '^[A-Za-z0-9]+$'
+minLength: 1
+maxLength: 20
+examples:
+  - India
+x-stoplight:
+  id: iz1dfva6jbweo

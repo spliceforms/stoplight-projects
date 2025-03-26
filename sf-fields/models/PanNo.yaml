@@ -1,0 +1,10 @@
+type: string
+title: PanNo
+description: Specifies the Permanent Account Number (PAN) for tax and identification purposes.
+pattern: '[A-Z]{5}[0-9]{4}[A-Z]{1}'
+minLength: 10
+maxLength: 10
+examples:
+  - BFWPC9721A
+x-stoplight:
+  id: h23tlmfm939x0

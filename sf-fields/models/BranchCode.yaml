@@ -1,0 +1,10 @@
+type: string
+title: BranchCode
+description: The unique code representing the specific branch of the bank
+pattern: '^\d{5}$'
+minLength: 5
+maxLength: 5
+examples:
+  - '10555'
+x-stoplight:
+  id: lzf0bb8rg8glg

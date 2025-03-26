@@ -1,0 +1,13 @@
+title: FDProductType
+description: Specifies the type of the product offered by the bank.
+examples:
+  - REGULAR
+x-stoplight:
+  id: gmkyzlp3u0jm7
+enum:
+  - REGULAR
+  - TAX_SAVING
+  - NON_WITHDRAWABLE
+pattern: '^[A-Z_]+$'
+minLength: 1
+maxLength: 20

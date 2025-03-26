@@ -1,0 +1,10 @@
+type: string
+x-stoplight:
+  id: 0b5h56co6x5zz
+title: StateName
+description: The name of the state where the address is located.
+pattern: '^[A-Za-z0-9]+$'
+minLength: 1
+maxLength: 40
+examples:
+  - Maharashtra

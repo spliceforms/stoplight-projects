@@ -1,0 +1,9 @@
+type: number
+title: Amount
+description: The monetary value represented as a numeric amount.
+minimum: 100
+maximum: 1000000000
+examples:
+  - 1000
+x-stoplight:
+  id: ini11ad7pmgdl

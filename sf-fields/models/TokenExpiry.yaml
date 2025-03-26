@@ -1,0 +1,9 @@
+type: number
+title: TokenExpiry
+description: Indicates the epoch time of when the token will expire
+minimum: 1
+maximum: 9999999999
+examples:
+  - 1741697595
+x-stoplight:
+  id: cvkiyh7xv3c0v

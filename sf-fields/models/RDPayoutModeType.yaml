@@ -1,0 +1,14 @@
+title: RDPayoutModeType
+type: string
+enum:
+  - INTERNAL_ACCOUNT
+  - EXTERNAL_ACCOUNT
+  - DD_MC
+  - CONVERT_TO_FD
+example: INTERNAL_ACCOUNT
+pattern: '^[A-Za-z0-9_]+$'
+minLength: 2
+maxLength: 25
+description: 'Specifies the method for disbursing the RD maturity proceeds, including both the principal and accrued interest.'
+x-stoplight:
+  id: o0tyweo12y0h9

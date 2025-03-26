@@ -1,0 +1,8 @@
+title: Latitude
+x-stoplight:
+  id: qw3kbbhhi2gpd
+type: number
+example: 28.650827
+minimum: -90
+maximum: 90
+description: It helps pinpoint the exact location of a branch on a map.

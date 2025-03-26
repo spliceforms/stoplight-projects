@@ -1,0 +1,10 @@
+type: string
+title: GuardianRelationWithNominee
+description: Indicates the guardian's relationship with minor nominee
+pattern: '^[A-Za-z0-9_]+$'
+minLength: 1
+maxLength: 40
+examples:
+  - FATHER
+x-stoplight:
+  id: 0888eni97zfec

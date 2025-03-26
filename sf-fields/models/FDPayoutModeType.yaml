@@ -1,0 +1,14 @@
+type: string
+enum:
+  - INTERNAL_ACCOUNT
+  - EXTERNAL_ACCOUNT
+  - DD_MC
+title: FDPayoutModeType
+description: Options provided to the applicant for maturity payout
+pattern: '^[A-Za-z0-9_]+$'
+minLength: 5
+maxLength: 16
+examples:
+  - INTERNAL_ACCOUNT
+x-stoplight:
+  id: znga5m7gpo9zr

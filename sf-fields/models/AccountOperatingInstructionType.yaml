@@ -1,0 +1,16 @@
+title: AccountOperatingInstructionType
+type: string
+description: The rules or authority under which the account will be managed and operated.
+x-stoplight:
+  id: gb69fppfi8t2d
+enum:
+  - SINGLE
+  - EOS
+  - JOINTLY
+  - MINOR
+  - FOS
+examples:
+  - SINGLE
+minLength: 3
+maxLength: 7
+pattern: '^[A-Z]+$'

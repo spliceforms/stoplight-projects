@@ -1,0 +1,10 @@
+type: string
+title: ApplicationId
+description: Unique identifier for the application
+pattern: '^[0-9]+$'
+minLength: 8
+maxLength: 20
+examples:
+  - '121323434'
+x-stoplight:
+  id: dubsof5lub7ah

@@ -1,0 +1,10 @@
+title: IndividualNamePrefix
+type: string
+description: 'The title representing salutations such as Mr., Ms., Mrs., Dr., and others for formal identification.'
+pattern: '^[A-Za-z ]{0,7}$'
+maxLength: 7
+examples:
+  - Mr
+x-stoplight:
+  id: lsat6ogy4fsc9
+minLength: 1

@@ -1,0 +1,14 @@
+type: string
+enum:
+  - SAVINGS
+  - CURRENT
+  - FD
+title: AccountType
+description: Specifies the type of bank account associated with the transaction or request.
+pattern: '^[A-Z]+$'
+minLength: 2
+maxLength: 7
+examples:
+  - FD
+x-stoplight:
+  id: w9nkypx9tomxe

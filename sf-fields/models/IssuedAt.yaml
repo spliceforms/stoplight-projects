@@ -1,0 +1,10 @@
+type: string
+title: IssuedAt
+description: The date on which the application was issued.
+format: date
+pattern: '^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$'
+minLength: 10
+maxLength: 10
+x-stoplight:
+  id: odiansb44jysk
+example: '1998-01-12'

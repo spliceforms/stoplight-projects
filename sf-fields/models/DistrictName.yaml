@@ -1,0 +1,10 @@
+type: string
+x-stoplight:
+  id: 4hfkaiipi06de
+title: DistrictName
+description: The name of the district where the address is located.
+pattern: '^[A-Za-z0-9]+$'
+minLength: 1
+maxLength: 40
+examples:
+  - Mumbai

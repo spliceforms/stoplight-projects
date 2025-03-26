@@ -1,0 +1,14 @@
+type: string
+enum:
+  - RENEW_PRINCIPAL
+  - RENEW_PRINCIPAL_AND_INTEREST
+  - DO_NOT_RENEW
+title: FDMaturityInstructionType
+description: The directive given for what should happen to a deposit when it reaches the end of its term.
+pattern: '^[A-Z_]+$'
+minLength: 12
+maxLength: 28
+examples:
+  - RENEW_PRINCIPAL
+x-stoplight:
+  id: 5r5yn3r7vzuor

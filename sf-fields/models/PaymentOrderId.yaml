@@ -1,0 +1,10 @@
+type: string
+title: PaymentOrderId
+description: Unique reference id created by Stitch for the payin request
+pattern: '^[A-Za-z0-9-_]+'
+minLength: 1
+maxLength: 50
+examples:
+  - NB1233434432
+x-stoplight:
+  id: xu3kbrq9mamn2
