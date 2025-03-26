@@ -2,6 +2,10 @@ title: AmountWithCurrency
 x-stoplight:
   id: sbp1q7zyp9lec
 type: object
+description: Amount with currency code
+required:
+  - amount
+  - currency
 properties:
   amount:
     $ref: 'stoplight://resources/overrides/wbgPBBXK2qY'
@@ -11,4 +15,3 @@ properties:
     $ref: 'stoplight://resources/overrides/euAvzUucCGw'
     x-stoplight:
       id: trn7cym9swchs
-description: Amount with currency code

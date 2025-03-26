@@ -1,0 +1,12 @@
+title: NomineeInquiryRequest
+x-stoplight:
+  id: e35gdhum4bjrj
+type: object
+description: Account number
+required:
+  - accountNo
+properties:
+  accountNo:
+    $ref: 'stoplight://resources/overrides/swJoliwLU7s'
+    x-stoplight:
+      id: ep1mruta33ktd

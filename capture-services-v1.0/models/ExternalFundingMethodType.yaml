@@ -1,0 +1,13 @@
+description: Options through which applicant can make a deposit using external bank accounts
+title: ExternalFundingMethodType
+type: string
+x-stoplight:
+  id: juqy97cplinyp
+enum:
+  - UPI
+  - NETBANKING
+pattern: '^[A-Z_]+'
+minLength: 3
+maxLength: 10
+examples:
+  - UPI

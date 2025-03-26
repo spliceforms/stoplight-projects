@@ -1,0 +1,26 @@
+title: OtherBankBranch
+x-stoplight:
+  id: mi8fksfz1wmuc
+type: object
+description: Branch of other bank
+required:
+  - code
+  - name
+  - ifsc
+properties:
+  code:
+    $ref: 'stoplight://resources/overrides/DkpDaBt77Zw'
+    x-stoplight:
+      id: kbqnyus40o01y
+  name:
+    $ref: 'stoplight://resources/overrides/tKUjcMXT9qo'
+    x-stoplight:
+      id: 73aw12qfq4omq
+  ifsc:
+    $ref: 'stoplight://resources/overrides/5js4tqEmILQ'
+    x-stoplight:
+      id: fz3xxlo9lzqzn
+  address:
+    $ref: ./BranchAddress.yaml
+    x-stoplight:
+      id: ctubov5zrvzh4

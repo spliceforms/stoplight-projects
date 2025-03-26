@@ -15,6 +15,15 @@ x-examples:
       months: 6
       years: 1
     maturityInstruction: renewPrinciple
+required:
+  - mobileNo
+  - accountNo
+  - amount
+  - dob
+  - productType
+  - interestPayoutTreatment
+  - tenure
+  - maturityInstruction
 properties:
   mobileNo:
     $ref: 'stoplight://resources/overrides/LT9qrA1aRC4'

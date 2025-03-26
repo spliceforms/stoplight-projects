@@ -31,7 +31,7 @@ paths:
               Example 1:
                 value:
                   vpa: ranbir.kapoor@paytm
-                  accountHolderName: Ali Akbar
+                  customerName: Ali Akbar
       responses:
         '200':
           description: OK
@@ -167,14 +167,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              required:
-                - accountNo
-              properties:
-                accountNo:
-                  $ref: 'stoplight://resources/overrides/swJoliwLU7s'
-                  x-stoplight:
-                    id: 9l8wn7v6a0clg
+              $ref: ./models/NomineeInquiryRequest.yaml
             examples:
               Example 1:
                 value:

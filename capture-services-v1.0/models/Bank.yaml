@@ -1,0 +1,14 @@
+title: Bank
+x-stoplight:
+  id: 6ljeoukpsckyf
+type: object
+description: The bank
+properties:
+  code:
+    $ref: 'stoplight://resources/overrides/EDRPdrQwsaA'
+    x-stoplight:
+      id: zbx8xy16xe2tp
+  name:
+    $ref: 'stoplight://resources/overrides/6NqxowBxwf4'
+    x-stoplight:
+      id: jwwpypzanbxfx

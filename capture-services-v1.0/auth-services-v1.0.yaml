@@ -14,12 +14,12 @@ info:
     url: 'https://spliceforms.com/'
     name: Commercial
 servers:
-  - url: 'https://api.stitch.spliceforms.com/capture'
+  - url: 'https://api.stitch.spliceforms.com/auth'
 tags:
   - name: OTP Auth
     description: API endpoints for token issuance on successful OTP authentication
 paths:
-  /v1/auth/otp/initiate:
+  /v1/otp/initiate:
     post:
       summary: Initiate OTP Authentication Flow
       description: |-
@@ -63,7 +63,7 @@ paths:
         id: 2ua89gmlwh9pu
       tags:
         - OTP Auth
-  /v1/auth/otp/resend:
+  /v1/otp/resend:
     post:
       summary: Resend OTP
       description: This endpoint resends the OTP for ongoing authentication session.
@@ -72,7 +72,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OTPChallengeRequest'
+              $ref: '#/components/schemas/OTPResendRequest'
       responses:
         '200':
           description: Returns the OTP challenge response
@@ -117,7 +117,7 @@ paths:
         id: g1gz6gmxzhc3u
       tags:
         - OTP Auth
-  /v1/auth/otp/token:
+  /v1/otp/token:
     post:
       summary: Verify OTP and Issue Token
       description: This endpoint verifies the OTP and returns access and ID tokens post successful OTP verification
@@ -272,3 +272,16 @@ components:
           $ref: ./models/AccessToken.yaml
         idToken:
           $ref: ./models/IDToken.yaml
+    OTPResendRequest:
+      title: OTPResendRequest
+      x-stoplight:
+        id: sfzvrc1f6tv7q
+      type: object
+      description: 'Request for resending OTP  '
+      required:
+        - session
+      properties:
+        session:
+          $ref: '#/components/schemas/OTPAuthSession'
+          x-stoplight:
+            id: fg52rp1kugcmt

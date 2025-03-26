@@ -28,6 +28,8 @@ paths:
   /v1/branches:
     get:
       summary: Fetch Branches
+      x-stoplight:
+        id: ohkafxvi6bzdt
       description: Retrieves a complete list of all bank branches with their details.
       operationId: fetchBranches
       parameters:
@@ -124,7 +126,7 @@ paths:
                       data:
                         type: array
                         x-stoplight:
-                          id: tk2u34onkp0qs
+                          id: ipfhxxq2t8brk
                         description: List of branches matching the search criteria
                         items:
                           $ref: ./models/Branch.yaml
@@ -163,8 +165,6 @@ paths:
                     detail: string
                     instance: 'http://example.com'
       x-internal: false
-      x-stoplight:
-        id: ohkafxvi6bzdt
       tags:
         - branches
   /v1/branches/states:
@@ -573,6 +573,8 @@ paths:
   /v1/states:
     get:
       summary: Fetch States
+      x-stoplight:
+        id: ii1qxr8m51gz1
       description: Retrieve list of states
       operationId: fetchStates
       parameters:
@@ -640,7 +642,7 @@ paths:
                 allOf:
                   - $ref: ./models/PaginatedResponse.yaml
                     x-stoplight:
-                      id: sr99bpxfx14j2
+                      id: tpla1ia38hyfw
                   - type: object
                     properties:
                       data:
@@ -649,7 +651,7 @@ paths:
                         items:
                           $ref: ./models/State.yaml
                           x-stoplight:
-                            id: jqvmzjw9pl0sw
+                            id: uiwsyk1gss77p
               examples: {}
         '400':
           description: This status code indicates that the server could not understand or process the request due to invalid syntax or parameters. The client should modify the request and retry.
@@ -684,8 +686,6 @@ paths:
                     status: 500
                     detail: string
                     instance: 'http://example.com'
-      x-stoplight:
-        id: ii1qxr8m51gz1
       tags:
         - location
     parameters: []
@@ -931,4 +931,88 @@ paths:
         in: path
         required: true
         description: The codeset name
+  /v1/banks:
+    get:
+      summary: Fetch Banks
+      description: Fetch the list of banks
+      tags:
+        - branches
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ./models/PaginatedResponse.yaml
+                    x-stoplight:
+                      id: sr99bpxfx14j2
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        description: List of states
+                        items:
+                          $ref: ./models/Bank.yaml
+                          x-stoplight:
+                            id: jqvmzjw9pl0sw
+              examples: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+      operationId: get-v1-banks
+      x-stoplight:
+        id: tho7ptqixdu7g
+  /v1/banks/branches:
+    get:
+      summary: Fetch Branches of Other Banks
+      description: Fetch list of branches of other banks for the given search criteria
+      tags:
+        - branches
+      parameters:
+        - name: bankCode
+          in: query
+          description: The bank code
+          schema:
+            $ref: 'stoplight://resources/overrides/EDRPdrQwsaA'
+        - name: ifsc
+          in: query
+          description: It includes records that match the exact ifsc code
+          schema:
+            $ref: 'stoplight://resources/overrides/5js4tqEmILQ'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ./models/PaginatedResponse.yaml
+                    x-stoplight:
+                      id: slck12bt0ysvr7
+                  - type: object
+                    x-stoplight:
+                      id: p5lorl112pbrx
+                    properties:
+                      data:
+                        type: array
+                        x-stoplight:
+                          id: tk2u34onkp0qs
+                        description: List of branches of other banks matching the search criteria
+                        items:
+                          $ref: ./models/OtherBankBranch.yaml
+                          x-stoplight:
+                            id: gphkrrtqi12bw
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+      operationId: get-v1-banks-branches
+      x-stoplight:
+        id: zy9z8d2rxkjn4
 x-internal: true

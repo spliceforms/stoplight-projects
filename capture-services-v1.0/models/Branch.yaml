@@ -2,6 +2,12 @@ title: Branch
 x-stoplight:
   id: 3pxsvpgp85b7e
 type: object
+required:
+  - code
+  - name
+  - ifsc
+  - geoLocation
+  - address
 properties:
   code:
     $ref: 'stoplight://resources/overrides/DkpDaBt77Zw'

@@ -1358,7 +1358,7 @@ components:
         amount:
           $ref: 'stoplight://resources/overrides/wbgPBBXK2qY'
         method:
-          $ref: 'stoplight://resources/overrides/U9W0ZWYM3ts'
+          $ref: ./models/ExternalFundingMethodType.yaml
           description: Possible methods for getting funds from external accounts
         instrument:
           oneOf:
@@ -1399,11 +1399,21 @@ components:
     CombinedFunding:
       title: CombinedFunding
       description: Funds are sourced from both internal and external accounts.
-      allOf:
-        - $ref: '#/components/schemas/InternalFunding'
-        - $ref: '#/components/schemas/ExternalFunding'
       x-stoplight:
         id: nztq8dlqfxcxw
+      type: object
+      required:
+        - internal
+        - external
+      properties:
+        internal:
+          $ref: '#/components/schemas/InternalFunding'
+          x-stoplight:
+            id: e4woy7sko96a8
+        external:
+          $ref: '#/components/schemas/ExternalFunding'
+          x-stoplight:
+            id: e2pzhjp9emz40
     PayinRequest:
       type: object
       title: PayinRequest
@@ -1435,7 +1445,7 @@ components:
         - instrument
       properties:
         method:
-          $ref: 'stoplight://resources/overrides/U9W0ZWYM3ts'
+          $ref: ./models/ExternalFundingMethodType.yaml
           description: Possible methods for getting funds from external accounts
         instrument:
           oneOf:
@@ -1571,9 +1581,40 @@ components:
         application:
           $ref: '#/components/schemas/FDApplication'
         applicant:
-          $ref: '#/components/schemas/ETBApplicant'
+          $ref: '#/components/schemas/ETBIndividualApplicant'
         account:
           $ref: '#/components/schemas/FDAccount'
+      examples:
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
+        - {}
     FDApplication:
       title: FDApplication
       description: Contains the common fields for FD applications
@@ -1592,6 +1633,8 @@ components:
               $ref: '#/components/schemas/Declaration'
             payin:
               $ref: '#/components/schemas/Payin'
+      examples:
+        - {}
     Declaration:
       type: object
       title: Declaration
@@ -1610,9 +1653,9 @@ components:
           $ref: ./models/Nominee.yaml
         consentReferenceId:
           $ref: 'stoplight://resources/overrides/JVJLO1LAh5U'
-    ETBApplicant:
+    ETBIndividualApplicant:
       type: object
-      title: ETBApplicant
+      title: ETBIndividualApplicant
       description: It includes essential information of an individual
       x-stoplight:
         id: nub97d2z8vpme
@@ -1705,7 +1748,7 @@ components:
         - applicant
       properties:
         applicant:
-          $ref: '#/components/schemas/ETBApplicant'
+          $ref: '#/components/schemas/ETBIndividualApplicant'
           x-stoplight:
             id: vdrn4pc3oibcx
         staff:
