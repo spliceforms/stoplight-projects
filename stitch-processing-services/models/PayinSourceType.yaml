@@ -1,0 +1,14 @@
+title: PayinSourceType
+description: Indicates the type of source for the payin
+type: string
+x-stoplight:
+  id: 7za683yp010l3
+enum:
+  - INTERNAL
+  - EXTERNAL
+  - COMBINED
+pattern: '^[A-Z_]+'
+minLength: 8
+maxLength: 8
+examples:
+  - EXTERNAL

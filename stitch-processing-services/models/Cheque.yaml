@@ -1,0 +1,12 @@
+type: object
+title: Cheque
+x-package: payment.instrument
+description: Contains details of the cheque instrument.
+x-stoplight:
+  id: j12nczs7clue4
+required:
+  - chequeNo
+properties:
+  chequeNo:
+    $ref: 'stoplight://resources/overrides/BW9k4iY6NTQ'
+    description: Specifies the unique numeric identifier printed on a cheque used for tracking and processing cheque-based transactions.

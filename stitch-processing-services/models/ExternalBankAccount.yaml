@@ -1,0 +1,16 @@
+type: object
+title: ExternalBankAccount
+x-package: payment.instrument
+description: Contains details of the NEFT instrument.
+x-stoplight:
+  id: 7inww1mr2xuw0
+required:
+  - accountNo
+  - ifsc
+properties:
+  accountType:
+    $ref: 'stoplight://resources/overrides/R8MDJ7uw3Ao'
+  accountNo:
+    $ref: 'stoplight://resources/overrides/CXUS5RjjXpQ'
+  ifsc:
+    $ref: 'stoplight://resources/overrides/oIlUghMdKYs'

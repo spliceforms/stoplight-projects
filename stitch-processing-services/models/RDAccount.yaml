@@ -1,0 +1,32 @@
+type: object
+title: RDAccount
+x-package: account.rd
+description: Represents the preferences for RD account
+x-stoplight:
+  id: o6xp762tyy471
+required:
+  - operatingInstruction
+  - tenure
+  - interestRate
+  - tds
+  - payout
+properties:
+  productCode:
+    $ref: 'stoplight://resources/overrides/vmNsQaC93oc'
+    x-stoplight:
+      id: oe4k7msccnlnd
+  operatingInstruction:
+    $ref: 'stoplight://resources/overrides/rObdOUlIxpI'
+    description: |-
+      The rules or authority under which the account will be managed and operated.
+      The allowed values will have to comply with the values of codeset.
+  tenure:
+    $ref: 'stoplight://resources/overrides/csQZLhwrNyY'
+  interestRate:
+    $ref: 'stoplight://resources/overrides/XFoE2fFIVew'
+    x-stoplight:
+      id: hpzhw9b7g993c
+  tds:
+    $ref: ./TDS.yaml
+  payout:
+    $ref: ./RDPayout.yaml

@@ -1,0 +1,24 @@
+type: object
+title: InternalFunding
+x-package: payment
+description: Funds drawn from an account within the bank.
+x-stoplight:
+  id: z37a0pyqwppgp
+required:
+  - amount
+  - internalFundingMethod
+  - instrument
+properties:
+  amount:
+    $ref: 'stoplight://resources/overrides/MZwicoWokxU'
+  internalFundingMethod:
+    $ref: ./InternalFundingMethodType.yaml
+    x-stoplight:
+      id: epnbdr7i6r4t6
+    description: Options through which applicant can make a deposit with HDFC account
+  instrument:
+    oneOf:
+      - $ref: ./Cheque.yaml
+      - $ref: ./InternalBankAccount.yaml
+    x-stoplight:
+      id: lhw06zs0u8esj

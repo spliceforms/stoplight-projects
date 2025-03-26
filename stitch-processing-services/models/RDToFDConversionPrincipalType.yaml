@@ -1,0 +1,12 @@
+title: RDToFDConversionPrincipalType
+type: string
+enum:
+  - ONLY_PRINCIPAL
+  - PRINCIPAL_AND_INTEREST
+example: ONLY_PRINCIPAL
+pattern: '^[A-Za-z0-9_]+$'
+minLength: 2
+maxLength: 25
+description: 'Specifies the method for disbursing the RD maturity proceeds, including both the principal and accrued interest.'
+x-stoplight:
+  id: uts4z3ym7ldmh

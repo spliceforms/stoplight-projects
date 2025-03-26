@@ -1,0 +1,17 @@
+type: object
+title: FDInternalPayout
+x-package: account.fd
+x-stoplight:
+  id: 0zj03c7cha5w0
+required:
+  - interestPayoutAccountNo
+  - principalPayoutAccountNo
+properties:
+  interestPayoutAccountNo:
+    $ref: ./InternalBankAccount.yaml
+    x-stoplight:
+      id: s32q8l8ljtsnl
+  principalPayoutAccountNo:
+    $ref: ./InternalBankAccount.yaml
+    x-stoplight:
+      id: 59ktjr8pzh64n

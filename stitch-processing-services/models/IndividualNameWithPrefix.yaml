@@ -1,0 +1,16 @@
+type: object
+title: IndividualFullNameWithPrefix
+x-package: applicant.individual
+description: Individual full name with prefix
+x-stoplight:
+  id: fyj4qz65qcm1s
+required:
+  - prefix
+  - fullName
+properties:
+  prefix:
+    $ref: 'stoplight://resources/overrides/wbEq5OXsCHU'
+  fullName:
+    $ref: 'stoplight://resources/overrides/GBJp3DRz5Pc'
+    x-stoplight:
+      id: lwmz56uvhdum2

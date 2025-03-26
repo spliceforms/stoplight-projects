@@ -1,0 +1,12 @@
+type: object
+title: ConvertToFD
+x-package: account.rd
+description: Indicates the customer's choice for converting the amount to a Fixed Deposit for a tenure of 1 year and 1 day.
+x-stoplight:
+  id: og94oxa4e6u0b
+required:
+  - principalType
+properties:
+  principalType:
+    $ref: ./RDToFDConversionPrincipalType.yaml
+    description: If the customer's choice for converting the amount to a Fixed Deposit for a tenure of 1 year and 1 day is true then whether it should be only for Principal or Principal + Interest

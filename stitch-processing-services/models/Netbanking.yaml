@@ -1,0 +1,17 @@
+type: object
+title: Netbanking
+x-package: payment.instrument
+description: Contains details of the netbanking instrument.
+x-stoplight:
+  id: invjj1sx222ij
+required:
+  - account
+properties:
+  account:
+    $ref: ./ExternalBankAccount.yaml
+    x-stoplight:
+      id: dslgw91ocw3xf
+  paymentReferenceNo:
+    $ref: 'stoplight://resources/overrides/6IgGrkcnBSA'
+    x-stoplight:
+      id: 5t3zyszady6nh

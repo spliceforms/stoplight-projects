@@ -1,0 +1,37 @@
+type: object
+x-stoplight:
+  id: 3ecnic72quaq4
+title: BankUse
+x-package: application
+description: Specifies internal processing details and configurations used by the bank to handle the application.
+required:
+  - valueDate
+  - branchCode
+  - accountNo
+properties:
+  lgCode:
+    $ref: 'stoplight://resources/overrides/h7aJH8CGqzs'
+    x-stoplight:
+      id: ccy9abfq1c3ey
+  lcCode:
+    $ref: 'stoplight://resources/overrides/XW1N92Wte4U'
+    x-stoplight:
+      id: xid4enzj7s0hb
+  bankOfficerName:
+    $ref: 'stoplight://resources/overrides/GBJp3DRz5Pc'
+    description: Bank officer name who has assisted to open an account.
+    x-stoplight:
+      id: 0l0q596mm4aqf
+  valueDate:
+    $ref: 'stoplight://resources/overrides/wm3wXYPgwSw'
+    x-stoplight:
+      id: hbzqedkw72zji
+  branchCode:
+    $ref: 'stoplight://resources/overrides/LjM7P7Qb4YA'
+    x-stoplight:
+      id: 0g4xh03ysn5mz
+  accountNo:
+    $ref: 'stoplight://resources/overrides/CXUS5RjjXpQ'
+    description: Specifies the unique FD/RD account number assigned by the bank.
+    x-stoplight:
+      id: j6rdaftzupvuy

@@ -1,0 +1,24 @@
+type: object
+title: ExternalFunding
+x-package: payment
+description: Funds sourced from an external bank account.
+x-stoplight:
+  id: hx2fyfbcile37
+required:
+  - amount
+  - externalFundingMethod
+  - instrument
+properties:
+  amount:
+    $ref: 'stoplight://resources/overrides/MZwicoWokxU'
+  externalFundingMethod:
+    $ref: ./ExternalFundingMethodType.yaml
+    x-stoplight:
+      id: etqhsz8ky9dwq
+    description: Possible methods for getting funds from external accounts
+  instrument:
+    oneOf:
+      - $ref: ./UPI.yaml
+      - $ref: ./Netbanking.yaml
+    x-stoplight:
+      id: jmwh4nu0rw4hy

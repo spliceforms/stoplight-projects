@@ -1,0 +1,13 @@
+type: object
+title: DA1Nomination
+x-package: nomination
+description: This form allows the account holder to specify a nominee.
+x-stoplight:
+  id: f7l0pty1nx2i2
+required:
+  - nominee
+properties:
+  nominee:
+    $ref: ./Nominee.yaml
+    x-stoplight:
+      id: u02shblgh8ej4

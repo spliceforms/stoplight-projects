@@ -1,0 +1,21 @@
+type: object
+title: Guardian
+x-package: nomination
+description: It refers to the information related to the person who will act as a legal guardian for the nominee in case the nominee is a minor or unable to manage their own affairs.
+x-stoplight:
+  id: c0cac19i4oixc
+required:
+  - name
+  - age
+  - address
+properties:
+  name:
+    $ref: 'stoplight://resources/overrides/GBJp3DRz5Pc'
+  age:
+    $ref: 'stoplight://resources/overrides/BwKc6HdGJu0'
+    description: |
+      Guardian cannot be a minor i.e age of guardian will be greater or equal to 18 years.
+    x-stoplight:
+      id: 6xs6wjst5lf6r
+  address:
+    $ref: 'stoplight://resources/overrides/mcFgUXbPKRw'

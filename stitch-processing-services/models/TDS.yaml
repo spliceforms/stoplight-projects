@@ -1,0 +1,23 @@
+type: object
+title: TDS
+x-package: account
+description: Captures tds information such as to deduct tds yes/no and if no then attach relevant document.
+x-stoplight:
+  id: 26t5urz0hi245
+required:
+  - isTdsDeductionOpted
+properties:
+  isTdsDeductionOpted:
+    type: boolean
+    description: |-
+      Indicates whether TDS should be deducted on the interest earned from the Fixed Deposit (FD) or Recurring Deposit (RD).
+      If False, TdsWaiver are expected in "attach"
+    x-stoplight:
+      id: 58fh8ae77gjnp
+  tdsWaiverProofType:
+    $ref: ./TDSWaiverProofType.yaml
+    x-stoplight:
+      id: 6n2cexp5qwhf2
+    description: |-
+      The tds waiver document to be selected in case when customer doesn't want to get tds deducted.
+      The allowed values will have to comply with the values of codeset.

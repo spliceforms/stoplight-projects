@@ -1,0 +1,52 @@
+type: object
+title: FDAccount
+x-package: account.fd
+description: Represents the preferences for FD account
+x-stoplight:
+  id: e7ex796rckz0f
+required:
+  - operatingInstruction
+  - tenure
+  - interestRate
+  - interestPayoutTreatment
+  - maturityInstruction
+  - tds
+  - isSweepinOpted
+  - payout
+properties:
+  productCode:
+    $ref: 'stoplight://resources/overrides/vmNsQaC93oc'
+    x-stoplight:
+      id: oe4k7frccnlnd
+  operatingInstruction:
+    $ref: 'stoplight://resources/overrides/rObdOUlIxpI'
+    description: |-
+      The rules or authority under which the account will be managed and operated.
+      The allowed values will have to comply with the values of codeset.
+  tenure:
+    $ref: 'stoplight://resources/overrides/csQZLhwrNyY'
+  interestRate:
+    $ref: 'stoplight://resources/overrides/XFoE2fFIVew'
+    x-stoplight:
+      id: hpzhw9b9g993c
+  interestPayoutTreatment:
+    $ref: 'stoplight://resources/overrides/CzwbIK795PY'
+    x-stoplight:
+      id: p8zx9hkaj4d9d
+    description: |-
+      The interval at which interest earned on a deposit is paid out to the account holder.
+      The allowed values will have to comply with the values of codeset.
+  maturityInstruction:
+    $ref: 'stoplight://resources/overrides/enqvw6TDHlY'
+    description: |-
+      The directive given for what should happen to a deposit when it reaches the end of its term.
+      The allowed values will have to comply with the values of codeset.
+  tds:
+    $ref: ./TDS.yaml
+  isSweepinOpted:
+    description: Indicates whether the customer has opted for the Sweep In option.
+    type: boolean
+    x-stoplight:
+      id: af4fis8eryt6f
+  payout:
+    $ref: ./FDPayout.yaml

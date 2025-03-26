@@ -1,0 +1,359 @@
+openapi: 3.1.0
+x-stoplight:
+  id: ya8ap8tak6e4t
+info:
+  version: '1.0'
+  title: Application Processing Service
+  summary: The processing service API is designed to process liability account opening applications
+  description: This API endpoint enables customers to submit a liability account opening applications.
+  contact:
+    name: akhilesh
+    email: api@apibanking.com
+    url: 'https://spliceforms.com/'
+  license:
+    url: 'https://spliceforms.com/'
+    name: Commercial
+servers:
+  - url: 'https://api.stitch.com/processing'
+paths:
+  /v1/applications/submit:
+    post:
+      summary: Submit Application
+      description: 'Single API endpoint to receive different types of application forms to open liability accounts. '
+      operationId: submitApplicationForm
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Form92828'
+            examples: {}
+      responses:
+        '200':
+          description: 'This status code indicates that the request was received, understood, and processed successfully by the server. The response body will contain the data requested by the client.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Indicates the overall outcome of the API request.
+                    pattern: ^success$
+                    minLength: 7
+                    maxLength: 7
+                    examples:
+                      - success
+                  message:
+                    type: string
+                    description: Provides a human-readable summary or additional details regarding the result of the FD application submission.
+                    pattern: ^FD Application submitted successfully$
+                    minLength: 1
+                    maxLength: 100
+                    examples:
+                      - FD Application submitted successfully
+                  referenceNo:
+                    type: string
+                    description: 'Represents the unique identifier assigned to the FD application, which can be used for tracking or referencing the submission.'
+                    pattern: '^FD[A-Z]\d{9}$'
+                    minLength: 12
+                    maxLength: 12
+                    examples:
+                      - FDA000000001
+                  timestamp:
+                    type: string
+                    description: Records the date and time when the response was generated.
+                    format: date-time
+                    pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$'
+                    minLength: 5
+                    maxLength: 25
+                    examples:
+                      - '2024-12-15T09:30:00Z'
+                x-examples:
+                  Example 1:
+                    status: success
+                    message: FD Application submitted successfully.
+                    applicationId: AU1600000001
+                    timestamp: '2024-12-15T09:30:00Z'
+              examples:
+                Example 1:
+                  value:
+                    status: success
+                    message: FD Application submitted successfully
+                    referenceNo: FDA000000001
+                    timestamp: '2024-12-15T09:30:00Z'
+                Example 2:
+                  value:
+                    status: success
+                    message: FD Application submitted successfully
+                    referenceNo: FDA000000001
+                    timestamp: '2024-12-15T09:30:00Z'
+        '400':
+          description: This status code indicates that the server could not understand or process the request due to invalid syntax or parameters. The client should modify the request and retry.
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+                x-examples:
+                  Example 1:
+                    status: error
+                    errorCode: '400'
+                    message: 'Invalid request data: Missing required field ''issuedAt''.'
+                    timestamp: '2024-12-15T09:35:00Z'
+              examples:
+                Example 1:
+                  value:
+                    type: 'https://example.com/resources'
+                    title: Unauthorized
+                    status: 200
+                    detail: api_key missing
+                    instance: 'https://example.com/resource'
+                    validationErrors:
+                      - message: fields can not be empty
+                        properties:
+                          - '23212322'
+                        severity: ERROR
+      servers:
+        - url: 'https://api.stitch.com/v1'
+      x-stoplight:
+        id: azqo4n2mzt8j6
+      tags:
+        - submission
+  /v1/applications/status:
+    post:
+      summary: Get Processing Status
+      description: Fetch application processing status for the given application id
+      tags:
+        - status-tracking
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationStatus92828'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: ./models/ProblemJson.yaml
+      operationId: get-v1-applications-status
+      x-stoplight:
+        id: ctl6btupqyab4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                applicationId:
+                  $ref: 'stoplight://resources/overrides/iHQHzZ1iQtY'
+                  x-stoplight:
+                    id: xr6887as5tqlj
+components:
+  schemas:
+    Form92828:
+      type: object
+      description: FIXED DEPOSIT / RECURRING DEPOSIT PAYIN SLIP (FD/RD) APPLICABLE FOR RESIDENT AND NON RESIDENT CUSTOMERS
+      x-stoplight:
+        id: rilisn4v2qqzp
+      title: Form92828
+      examples:
+        - applicationDetails:
+            initiation:
+              formId: '92828'
+              formVersion: '113'
+              applicationId: MB2300000001
+              channelId: '10907'
+              issuedAt: '1998-01-12'
+            payin:
+              - internalFunding:
+                  amount: 1000
+                  method: cheque
+                  instrument:
+                    chequeNo: 10293847
+            declaration:
+              optForNomination: true
+              nominationForDa1:
+                showNomineeNameOnFdAdvice: true
+                appointExistingNominee: true
+                nominee:
+                  name: Ranbir Rishi Kapoor
+                  dob: '1998-02-01'
+                  address:
+                    line1: 'C 701 Lodha Belair, Vaishali Nagar'
+                    cityCode: Mumbai
+                    stateCode: Maharashtra
+                    countryCode: India
+                    pinCode: '400102'
+                  branchCode: '10555'
+                  residenceTelephone: 2226781798
+                  relationship: brother
+                  guardian:
+                    name: Ranbir Rishi Kapoor
+                    age: 20
+                    address: 'C 701 Lodha Belair, Vaishali Nagar'
+              witness:
+                - name: Ranbir Rishi Kapoor
+                  address: 'C 701 Lodha Belair, Vaishali Nagar'
+                  place: Mumbai
+                  date: '1998-01-12'
+            bankUse:
+              lgCode: H109
+              lcCode: H109
+              bankOfficerName: Ranbir Rishi Kapoor
+              valueDate: '2022-01-12'
+              branchCode: '10555'
+              accountNo: '102001053410'
+          applicantDetails:
+            customerId: 116728060
+            identity:
+              name:
+                prefix: Mr
+                fullName: Ranbir Rishi Kapoor
+              dob: '1998-02-01'
+              panNo: BFWPC9721A
+              isForm60Attached: true
+          accountDetails:
+            productId: '193'
+            operatingInstruction: single
+            tenure: P6M5D
+            interestRate: 9.5
+            interestPaymentFrequency: monthly
+            maturityInstruction: renewPrincipleAndInterest
+            tds:
+              isTdsDeductionOpted: true
+              tdsWaiverAttachment: form15_G_H
+            optForSweepin: true
+            payout:
+              payoutProduct: fdMaturity
+              payoutDetails:
+                transferType: internalMaturity
+                transferDetails:
+                  interestAccountNo: '102001053410'
+                  principalAccountNo: '102001053410'
+      required:
+        - application
+        - applicant
+        - account
+      properties:
+        application:
+          $ref: '#/components/schemas/Application92828'
+          x-stoplight:
+            id: n8ue67dzitnuh
+        applicant:
+          $ref: '#/components/schemas/ETBIndividualApplicant'
+          x-stoplight:
+            id: 0800vpaosbjg1
+        account:
+          x-stoplight:
+            id: b49sn4dhfw10g
+          oneOf:
+            - $ref: ./models/FDAccount.yaml
+              x-stoplight:
+                id: on7sl98uqmuh1
+            - $ref: ./models/RDAccount.yaml
+              x-stoplight:
+                id: modtf6ds1qwoa
+    Application92828:
+      type: object
+      title: Application92828
+      x-package: application
+      description: Represents the Application object for application form 92828
+      x-stoplight:
+        id: taydkhnrmfgqm
+      required:
+        - initiation
+        - payin
+        - declaration
+        - bankUse
+      properties:
+        initiation:
+          $ref: ./models/Initiation.yaml
+        payin:
+          $ref: ./models/Payin.yaml
+        declaration:
+          $ref: '#/components/schemas/Declaration'
+        bankUse:
+          $ref: ./models/BankUse.yaml
+    Declaration:
+      type: object
+      title: Declaration
+      x-package: application
+      description: 'A declaration may include consent for compliance, acknowledgment of policies, and confirmation of provided details.'
+      x-stoplight:
+        id: d2kmi0eogtgsx
+      required:
+        - isNominationOpted
+        - nomination
+        - showNomineeNameOnFdAdvice
+      properties:
+        isNominationOpted:
+          x-stoplight:
+            id: 7dbc8qm3fmpn9
+          description: This indicates whether the account holder chooses to nominate a beneficiary who will receive the funds in the account in the event of the account holder’s demise. If boolean is true then details in "nominationForDa1" has to be filled
+          type: boolean
+        nomination:
+          x-stoplight:
+            id: gdq2khgfux9po
+          oneOf:
+            - $ref: ./models/DA1Nomination.yaml
+              x-stoplight:
+                id: ixe4g35q3vdvs
+            - $ref: ./models/ExistingNomination.yaml
+              x-stoplight:
+                id: 8ybtph53cz6fu
+        showNomineeNameOnFdAdvice:
+          type: boolean
+          x-stoplight:
+            id: 2xg6amxsakpu2
+          description: Indicates whether the nominee's name should be displayed on the Fixed Deposit advice.
+        witnesses:
+          $ref: ./models/WitnessList.yaml
+          x-stoplight:
+            id: tfd5ar1r0bhcl
+    ETBIndividualApplicant:
+      type: object
+      title: ETBIndividualApplicant
+      x-package: applicant
+      description: Applicant includes essential information of an individual
+      x-stoplight:
+        id: nditubbu7u5h5
+      required:
+        - customerId
+      properties:
+        customerId:
+          $ref: 'stoplight://resources/overrides/ajUxCNykrmw'
+        name:
+          $ref: ./models/IndividualNameWithPrefix.yaml
+        dob:
+          $ref: 'stoplight://resources/overrides/aG0y4UYcP4U'
+        panNo:
+          $ref: 'stoplight://resources/overrides/MjXTu6jFfGs'
+          x-stoplight:
+            id: 5mae4tbz01btr
+        isForm60Attached:
+          description: Indicates whether Form 60 is attached in cases where a PAN is not provided.
+          type: boolean
+    ApplicationStatus92828:
+      type: object
+      title: ApplicationStatus92828
+      description: Processing status for application
+      x-stoplight:
+        id: tmhi5v9yp9q61
+      required:
+        - status
+      properties:
+        status:
+          $ref: 'stoplight://resources/overrides/RL5rpdrZO8o'
+        accountOpeningResult:
+          oneOf:
+            - $ref: ./models/FDAccountOpeningResult.yaml
+              x-stoplight:
+                id: ussk8kva66n8w
+tags:
+  - name: submission
+    description: API endpoints to initiate the application processing
+  - name: status-tracking
+    description: API endpoints to track the status of application processing

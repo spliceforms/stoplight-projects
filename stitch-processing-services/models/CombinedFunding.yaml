@@ -1,0 +1,17 @@
+title: CombinedFunding
+description: Funds are sourced from both internal and external accounts.
+x-stoplight:
+  id: nztq8dlqfxcxw
+type: object
+required:
+  - internal
+  - external
+properties:
+  internal:
+    $ref: ./InternalFunding.yaml
+    x-stoplight:
+      id: e4woy7sko96a8
+  external:
+    $ref: ./ExternalFunding.yaml
+    x-stoplight:
+      id: e2pzhjp9emz40

@@ -1,0 +1,13 @@
+description: Options through which applicant can make a deposit with HDFC account
+title: InternalFundingMethodType
+type: string
+x-stoplight:
+  id: h6xd7r9bk3vnm
+enum:
+  - BANK_ACCOUNT
+  - CHEQUE
+pattern: '^[A-Z_]+'
+minLength: 6
+maxLength: 12
+examples:
+  - EXTERNAL

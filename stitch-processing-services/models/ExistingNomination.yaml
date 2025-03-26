@@ -1,0 +1,13 @@
+title: ExistingNomination
+x-package: nomination
+x-stoplight:
+  id: wiz3cxtcuf9um
+type: object
+description: 'Indicates if existing nomination is to be copied  '
+required:
+  - accountNo
+properties:
+  accountNo:
+    $ref: 'stoplight://resources/overrides/CXUS5RjjXpQ'
+    x-stoplight:
+      id: crb3omw63whoy

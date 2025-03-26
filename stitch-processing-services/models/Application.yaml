@@ -1,0 +1,10 @@
+title: Application
+x-stoplight:
+  id: tx6x7ltlgx5p5
+type: object
+description: Common object for all types of applications. Contains attributes that are applicable for all bank application forms
+properties:
+  initiation:
+    $ref: ./Initiation.yaml
+    x-stoplight:
+      id: yg6uw78hje26z

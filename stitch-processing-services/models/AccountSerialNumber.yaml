@@ -1,0 +1,10 @@
+type: integer
+title: AccountSerialNumber
+description: Indicates the serial number of the account which is added to the application
+format: int32
+minimum: 1
+maximum: 1
+examples:
+  - 1
+x-stoplight:
+  id: myofrfpy3wo2a

@@ -1,0 +1,34 @@
+type: object
+title: Witness
+x-package: application
+description: Specifies the information of the witness required to validate and authenticate the application.
+x-stoplight:
+  id: e5miu1hmugc2f
+required:
+  - name
+  - address
+  - place
+properties:
+  name:
+    $ref: 'stoplight://resources/overrides/GBJp3DRz5Pc'
+    description: Witness full name
+  address:
+    $ref: 'stoplight://resources/overrides/mcFgUXbPKRw'
+    description: Witness complete address
+  place:
+    description: Specifies the physical location or venue relevant to the context.
+    type: string
+    minLength: 1
+    pattern: '^[A-Za-z0-9_]+$'
+    example: Mumbai
+    maxLength: 20
+  date:
+    type: string
+    x-stoplight:
+      id: lsugzgf7h9oy0
+    format: date
+    pattern: '^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$'
+    minLength: 10
+    maxLength: 10
+    example: '1998-01-12'
+    description: The date at which witness information is captured in the application

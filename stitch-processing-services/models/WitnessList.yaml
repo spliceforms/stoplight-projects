@@ -1,0 +1,9 @@
+type: array
+title: WitnessList
+description: Witness details are captured when applicant assigns a nominee and doesn't know how to signature
+minItems: 1
+maxItems: 2
+x-stoplight:
+  id: juodh53fpdzb9
+items:
+  $ref: ./Witness.yaml

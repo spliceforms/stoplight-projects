@@ -1,0 +1,32 @@
+type: object
+title: Initiation
+x-package: application
+description: 'Captures metadata and submission details such as the form id, form''s version, application id, issuance date, and the channel id through which the application was initiated.'
+x-stoplight:
+  id: e3u9cq6d6ezcg
+required:
+  - formId
+  - formVersion
+  - applicationId
+  - channelId
+  - issuedAt
+properties:
+  formId:
+    $ref: 'stoplight://resources/overrides/iiGPrB32Ank'
+    x-stoplight:
+      id: k6lnt5mpgxzv9
+  formVersion:
+    $ref: 'stoplight://resources/overrides/VLQ0aAoMnm0'
+    x-stoplight:
+      id: wd47vaeyyvt78
+    description: 'A form version is a specific iteration of a form, identified by a version number'
+  applicationId:
+    $ref: 'stoplight://resources/overrides/iHQHzZ1iQtY'
+    x-stoplight:
+      id: m68hhd8de6gf8
+  channelId:
+    $ref: 'stoplight://resources/overrides/eOB5R23etBA'
+    x-stoplight:
+      id: oit18uxk7dn7u
+  issuedAt:
+    $ref: 'stoplight://resources/overrides/np1JeqRzOfA'

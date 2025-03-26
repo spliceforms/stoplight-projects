@@ -1,0 +1,18 @@
+type: object
+title: UPI
+x-package: payment.instrument
+description: Contains details of the UPI instrument.
+x-stoplight:
+  id: 5hkobctoawsjs
+required:
+  - vpa
+  - account
+properties:
+  vpa:
+    $ref: 'stoplight://resources/overrides/3RlN1EaYMPw'
+  account:
+    $ref: ./ExternalBankAccount.yaml
+    x-stoplight:
+      id: t9embtv36wxpz
+  paymentReferenceNo:
+    $ref: 'stoplight://resources/overrides/6IgGrkcnBSA'

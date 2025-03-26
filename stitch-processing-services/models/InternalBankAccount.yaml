@@ -1,0 +1,14 @@
+type: object
+title: InternalBankAccount
+x-package: payment.instrument
+description: Specifies the internal bank account details
+examples:
+  - accountNo: '002001053410'
+x-stoplight:
+  id: q5waebxxnruk6
+required:
+  - accountNo
+properties:
+  accountNo:
+    $ref: 'stoplight://resources/overrides/CXUS5RjjXpQ'
+    description: A unique identifier number assigned to a bank account.

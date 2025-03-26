@@ -1,0 +1,14 @@
+type: object
+title: FDAccountOpeningResult
+x-stoplight:
+  id: p30gaesnmzwua
+required:
+  - accountSerialNo
+  - accountNo
+properties:
+  accountSerialNo:
+    $ref: ./AccountSerialNumber.yaml
+  accountNo:
+    $ref: 'stoplight://resources/overrides/CXUS5RjjXpQ'
+  accountType:
+    $ref: 'stoplight://resources/overrides/R8MDJ7uw3Ao'

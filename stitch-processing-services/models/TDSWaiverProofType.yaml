@@ -1,0 +1,14 @@
+title: TDSWaiverProofType
+type: string
+description: Indicates the type of document proof that is attached with the application form for getting waiver on TDS.
+x-stoplight:
+  id: gw33xz3ftldrn
+examples:
+  - FORM_15GH
+enum:
+  - FORM_15GH
+  - TAX_EXEMPT_LETTER
+  - CUST_ID_WAIVER
+minLength: 9
+maxLength: 17
+pattern: '^[A-Z0-9_]+$'

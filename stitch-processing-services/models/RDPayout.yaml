@@ -1,0 +1,28 @@
+type: object
+title: RDPayout
+x-package: account.rd
+description: 'Specifies the method for disbursing the RD maturity proceeds, including both the principal and accrued interest.'
+x-stoplight:
+  id: yzab1vrzzie8f
+required:
+  - mode
+  - instrument
+properties:
+  mode:
+    $ref: 'stoplight://resources/overrides/WlSjRrHFStQ'
+    description: 'Specifies the method for disbursing the RD maturity proceeds, including both the principal and accrued interest.'
+    x-stoplight:
+      id: nm3gow16l09zr
+  instrument:
+    x-stoplight:
+      id: 0qtyb3ybwgu3v
+    oneOf:
+      - $ref: ./InternalBankAccount.yaml
+        x-stoplight:
+          id: 9yx4v9a554wo3
+      - $ref: ./ExternalBankAccount.yaml
+        x-stoplight:
+          id: i0nh8lp6aknmv
+      - $ref: ./ConvertToFD.yaml
+        x-stoplight:
+          id: 4sybmjtrdi045

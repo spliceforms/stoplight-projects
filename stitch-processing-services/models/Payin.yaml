@@ -1,0 +1,29 @@
+title: Payin
+x-package: payment
+description: 'Contains the funding details, including the amount and payment method.'
+x-stoplight:
+  id: y0zcoi6f08pap
+type: object
+additionalProperties: false
+required:
+  - sourceType
+  - source
+properties:
+  sourceType:
+    $ref: ./PayinSourceType.yaml
+    x-stoplight:
+      id: vosih9eb07mr0
+    description: Indicates the type of source for the payin
+  source:
+    x-stoplight:
+      id: m3td8x1aggtc3
+    oneOf:
+      - $ref: ./InternalFunding.yaml
+        x-stoplight:
+          id: 77vfug44rwurk
+      - $ref: ./ExternalFunding.yaml
+        x-stoplight:
+          id: 6b6waes1nu7dn
+      - $ref: ./CombinedFunding.yaml
+        x-stoplight:
+          id: 90uiznbqkde7v

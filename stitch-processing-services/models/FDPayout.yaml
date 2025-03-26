@@ -1,0 +1,23 @@
+title: FDPayout
+x-package: account.fd
+description: Specifies the methods to payout FD interest and/or principal on maturity
+x-stoplight:
+  id: 8cv6pv3c6nh2w
+type: object
+required:
+  - mode
+  - instrument
+properties:
+  mode:
+    $ref: 'stoplight://resources/overrides/xxTjGnx2gTk'
+    x-stoplight:
+      id: 7qgl706xptrk5
+    description: Options provided to the applicant for maturity payout
+  instrument:
+    x-stoplight:
+      id: yiae4q1tjkswt
+    oneOf:
+      - $ref: ./FDInternalPayout.yaml
+      - $ref: ./ExternalBankAccount.yaml
+        x-stoplight:
+          id: zj96y0vp5dne1
