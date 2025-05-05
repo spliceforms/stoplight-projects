@@ -279,11 +279,10 @@
       "targets": [
         {
           "formats": [
-            "oas2"
+            "oas3"
           ],
           "given": [
-            "$..[?(@.type == 'string' && !@.enum)]",
-            "$..properties[?(@.type == 'string' && !@.enum)]"
+            "$..[?(@.type == 'string' && !@.enum && @.format != 'date' && @.format != 'date-time')]"
           ]
         }
       ]
@@ -1227,12 +1226,25 @@
       ],
       "severity": "error",
       "then": {
-        "function": "pattern",
+        "function": "schema",
         "functionOptions": {
-          "match": "^object$",
-          "notMatch": ""
-        },
-        "field": "type"
+          "schema": {
+            "anyOf": [
+              {
+                "required": [
+                  "$ref"
+                ]
+              },
+              {
+                "not": {
+                  "required": [
+                    "type"
+                  ]
+                }
+              }
+            ]
+          }
+        }
       },
       "description": "**Model must not contain another model inline. `#Ref` property should be used instead.**\n\nIn OpenAPI definitions, models should not contain other models directly inline. Instead, use the `$ref` property to reference other models.\n\n#### Json Example\n\n```json\n{\n  \"components\": {\n    \"schemas\": {\n      \"User\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"id\": {\n            \"type\": \"string\"\n          },\n          \"profile\": {\n            \"$ref\": \"#/components/schemas/Profile\"\n          }\n        }\n      },\n      \"Profile\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"firstName\": {\n            \"type\": \"string\"\n          },\n          \"lastName\": {\n            \"type\": \"string\"\n          }\n        }\n      }\n    }\n  }\n}\n",
       "message": "Model must not contain another model inline. #Ref property should be used instead",
