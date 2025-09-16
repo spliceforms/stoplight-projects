@@ -7,9 +7,8 @@ This repository provides a custom Spectral ruleset for validating and linting Op
 ## Table of Contents
 
 - [About](#about)
-- [Prerequisites](#prerequisites)
-- [Setup in VS Code](#setup-in-vs-code)
-- [Validating Files](#validating-files)
+- [Using Stoplight-CLI](#using-stoplight-cli)
+- [Configure in VS Code](#configure-in-vs-code)
 
 ---
 
@@ -19,7 +18,40 @@ The custom `.spectral.json` ruleset enforces specific style and validation rules
 
 ---
 
-## Prerequisites
+## Using Stoplight-CLI
+
+ ### Prerequisites
+ 
+ 	 node -v
+ 	 npm -v
+
+ ### Validate using StopLight CLI
+ Step 1 : Install Spectral CLI
+
+	 npm install -g @stoplight/spectral-cli
+
+Step 2: Verify Spectral Installation
+
+	 spectral --version
+
+Step 3: Create/Download an OpenAPI YAML/JSON File
+
+Step 4: Create or Download .spectral.yaml Ruleset(Custom)(https://github.com/spliceforms/stoplight-projects/blob/main/sf-style-guide/.spectral.json)
+
+  Note : save Both into same directory.
+
+Step 5: Run Spectral Lint
+
+  	=> To lint using built-in rules
+  	 spectral lint <Your_File_Name>.yaml
+
+  	=> To lint with your custom .spectral.yaml ruleset
+	 spectral lint -r .spectral.yaml <Your_File_Name>.yaml
+
+---
+## Configure in VS Code
+
+### Prerequisites
 
 1. **Visual Studio Code**:
    Download and install [Visual Studio Code](https://code.visualstudio.com/).
@@ -31,17 +63,16 @@ The custom `.spectral.json` ruleset enforces specific style and validation rules
    - Search for `Spectral`.
    - Click "Install" on the "Spectral" extension by Stoplight.
 
----
-## Setup in VS Code
+ ### setup
 
   1.	Open VS Code.
- 	2.	Go to Settings (Ctrl + , or Cmd + ,).
+  2.	Go to Settings (Ctrl + , or Cmd + ,).
   3.	Search for Stoplight: Ruleset.
   4.	Set the path to:  https://raw.githubusercontent.com/spliceforms/stoplight-style-guide/refs/heads/main/sf-style-guide/.spectral.json
   5.	Save the settings and open a file to see if the ruleset is applied.
 
 ---
-## Validating Files
+ ### Validating Files
 
 Once the Spectral extension is configured, you can validate files by simply opening them in VS Code.
 
